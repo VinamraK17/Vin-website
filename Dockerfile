@@ -17,7 +17,7 @@ COPY . .
 RUN npx prisma generate
 
 # Build the application
-RUN npm run build
+RUN npm run build > build.log 2>&1 || (cat build.log && exit 1)
 
 # --- Production Image ---
 FROM node:20-slim
