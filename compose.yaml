@@ -3,10 +3,10 @@ services:
   portfolio-db:
     image: mariadb:10.11
     environment:
-      MARIADB_ROOT_PASSWORD: YOUR_ROOT_PASSWORD_HERE
+      MARIADB_ROOT_PASSWORD: Sairam@1983
       MARIADB_DATABASE: portfolio
       MARIADB_USER: portfolio_user
-      MARIADB_PASSWORD: YOUR_USER_PASSWORD_HERE
+      MARIADB_PASSWORD: Sairam@1983
     volumes:
       - portfolio-db-data:/var/lib/mysql
     networks:
@@ -19,7 +19,7 @@ services:
     depends_on:
       - portfolio-db
     environment:
-      - DATABASE_URL=mysql://portfolio_user:YOUR_USER_PASSWORD_HERE@portfolio-db:3306/portfolio
+      - DATABASE_URL=mysql://portfolio_user:Sairam%401983@portfolio-db:3306/portfolio
       - NODE_ENV=production
     ports:
       - "3000:3000"
