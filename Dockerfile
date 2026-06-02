@@ -16,8 +16,8 @@ COPY . .
 # Generate Prisma client
 RUN npx prisma generate
 
-# Build the application
-RUN npm run build
+# Build the application (write dummy server if build fails to keep container running for debugging)
+RUN npm run build > build.log 2>&1 || (mkdir -p dist && echo "console.log('Build failed. Please open the terminal in Dockhand and run: cat /app/build.log'); setInterval(() => {}, 1000);" > dist/server.cjs)
 
 # --- Production Image ---
 FROM node:20-slim
@@ -34,6 +34,8 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/prisma ./prisma
 # Copy portfolio.html if it's used outside dist
 COPY --from=builder /app/portfolio.html ./portfolio.html
+COPY --from=builder /app/build.log* ./
+
 
 # Expose the application port
 EXPOSE 3000
