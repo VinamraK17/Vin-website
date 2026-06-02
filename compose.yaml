@@ -6,10 +6,10 @@ services:
     image: mariadb:10.11
     container_name: portfolio-db
     environment:
-      MARIADB_ROOT_PASSWORD: change_me_secure_root_password
+      MARIADB_ROOT_PASSWORD: YOUR_ROOT_PASSWORD_HERE
       MARIADB_DATABASE: portfolio
       MARIADB_USER: portfolio_user
-      MARIADB_PASSWORD: change_me_secure_user_password
+      MARIADB_PASSWORD: YOUR_USER_PASSWORD_HERE
     volumes:
       - /volume1/docker/portfolio-db:/var/lib/mysql
     networks:
@@ -23,7 +23,7 @@ services:
     depends_on:
       - portfolio-db
     environment:
-      - DATABASE_URL=mysql://portfolio_user:change_me_secure_user_password@portfolio-db:3306/portfolio
+      - DATABASE_URL=mysql://portfolio_user:YOUR_USER_PASSWORD_HERE@portfolio-db:3306/portfolio
       - NODE_ENV=production
     ports:
       - "3000:3000"
