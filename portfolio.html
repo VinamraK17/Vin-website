@@ -205,7 +205,7 @@
 <body class="font-sans">
 
     <!-- Navigation -->
-    <nav class="glass-nav px-6 py-4">
+    <nav class="glass-nav px-6 py-4 relative z-50">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-6">
                 <a href="#" class="font-display font-bold text-xl tracking-tighter text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors">VK™</a>
@@ -218,7 +218,7 @@
                    </button>
                 </div>
             </div>
-            <div class="flex items-center gap-8">
+            <div class="flex items-center gap-4">
                 <div class="hidden md:flex items-center gap-6">
                     <a href="#" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Home</a>
                     <a href="#projects" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Projects</a>
@@ -226,18 +226,27 @@
                     <a href="#expertise" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Expertise</a>
                     <a href="#contact" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Contact</a>
                 </div>
-                <a href="#contact" class="px-5 py-2 bg-[var(--color-ink)] text-[var(--color-surface)] rounded-full text-[11px] font-bold uppercase tracking-wider hover:bg-[var(--color-ink)]/90 transition-all">Get in touch</a>
+                <a href="#contact" class="hidden md:inline-block px-5 py-2 bg-[var(--color-ink)] text-[var(--color-surface)] rounded-full text-[11px] font-bold uppercase tracking-wider hover:bg-[var(--color-ink)]/90 transition-all font-mono">Get in touch</a>
+                
+                <!-- Hamburger Button (Mobile Only) -->
+                <button onclick="toggleMenu()" class="md:hidden p-2 rounded-full border border-[var(--color-border)] hover:bg-[var(--color-ink)]/5 transition-all text-[var(--color-ink)] focus:outline-none cursor-pointer flex items-center justify-center">
+                    <i data-lucide="menu" id="hamburger-icon" class="w-4 h-4"></i>
+                </button>
             </div>
-    </nav>
+        </div>
 
-    <!-- Creative Floating Navigation Dock (Mobile Only) -->
-    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden bg-[var(--color-surface)]/80 backdrop-blur-xl border border-[var(--color-border)] rounded-full px-6 py-3.5 flex items-center gap-6 shadow-2xl shadow-black/50">
-        <a href="#" class="mobile-dock-link text-[10px] uppercase tracking-widest font-mono font-bold text-[var(--color-accent)] transition-colors">Home</a>
-        <a href="#projects" class="mobile-dock-link text-[10px] uppercase tracking-widest font-mono font-bold text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-colors">Projects</a>
-        <a href="#experience" class="mobile-dock-link text-[10px] uppercase tracking-widest font-mono font-bold text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-colors">Exp</a>
-        <a href="#expertise" class="mobile-dock-link text-[10px] uppercase tracking-widest font-mono font-bold text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-colors">Tools</a>
-        <a href="#contact" class="mobile-dock-link text-[10px] uppercase tracking-widest font-mono font-bold text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-colors">Contact</a>
-    </div>
+        <!-- Mobile Drawer Dropdown Overlay -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[var(--color-surface)]/95 backdrop-blur-xl border-b border-[var(--color-border)] md:hidden z-40 p-8 flex flex-col gap-6 shadow-2xl">
+            <div class="flex flex-col gap-2">
+                <a href="#" onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-widest text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-all py-3 border-b border-[var(--color-border)]/10 block">Home</a>
+                <a href="#projects" onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-widest text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-all py-3 border-b border-[var(--color-border)]/10 block">Projects</a>
+                <a href="#experience" onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-widest text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-all py-3 border-b border-[var(--color-border)]/10 block">Experience</a>
+                <a href="#expertise" onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-widest text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-all py-3 border-b border-[var(--color-border)]/10 block">Expertise</a>
+                <a href="#contact" onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-widest text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-all py-3 border-b border-[var(--color-border)]/10 block">Contact</a>
+            </div>
+            <a href="#contact" onclick="toggleMenu()" class="w-full text-center py-4 bg-[var(--color-ink)] text-[var(--color-surface)] rounded-2xl text-[11px] font-bold uppercase tracking-wider hover:opacity-90 transition-all font-mono">Get in touch</a>
+        </div>
+    </nav>
 
     <main class="px-6 relative z-10 copy-protected">
         <!-- Hero Section -->
@@ -1383,30 +1392,26 @@
             }
         };
 
-        // ScrollSpy for mobile floating dock
-        const sections = document.querySelectorAll('section, header, footer');
-        const dockLinks = document.querySelectorAll('.mobile-dock-link');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.pageYOffset >= sectionTop - 250) {
-                    current = section.getAttribute('id') || '';
+        // Toggle Mobile Menu Overlay
+        window.toggleMenu = () => {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('hamburger-icon');
+            if (menu) {
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    if (icon) {
+                        icon.setAttribute('data-lucide', 'x');
+                        if (window.lucide) lucide.createIcons();
+                    }
+                } else {
+                    menu.classList.add('hidden');
+                    if (icon) {
+                        icon.setAttribute('data-lucide', 'menu');
+                        if (window.lucide) lucide.createIcons();
+                    }
                 }
-            });
-            
-            dockLinks.forEach(link => {
-                link.classList.remove('text-[var(--color-accent)]');
-                link.classList.add('text-[var(--color-ink-faint)]');
-                const href = link.getAttribute('href');
-                if (href === `#${current}` || (current === '' && href === '#')) {
-                    link.classList.add('text-[var(--color-accent)]');
-                    link.classList.remove('text-[var(--color-ink-faint)]');
-                }
-            });
-        });
+            }
+        };
 
         // Initialize Lucide Icons on load with a fallback
         function initIcons() {

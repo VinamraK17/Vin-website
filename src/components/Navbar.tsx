@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
-import { Sun, Moon } from "lucide-react";
+import React, { useState } from "react";
+import { Sun, Moon, Menu, X } from "lucide-react";
 
 interface NavbarProps {
   mode: "dark" | "light";
@@ -7,6 +8,8 @@ interface NavbarProps {
 }
 
 export default function Navbar({ mode, setMode }: NavbarProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
   const NAV_LINKS = [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
@@ -15,11 +18,12 @@ export default function Navbar({ mode, setMode }: NavbarProps) {
   ];
 
   return (
-    <nav className="glass-nav px-6 py-4">
+    <nav className="glass-nav px-6 py-4 relative z-50">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-6">
           <Link 
             to="/" 
+            onClick={() => setIsOpen(false)}
             className="font-display font-bold text-xl tracking-tighter text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors"
           >
             VK™
@@ -47,7 +51,8 @@ export default function Navbar({ mode, setMode }: NavbarProps) {
           </div>
         </div>
         
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4">
+          {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
               <NavLink 
@@ -65,33 +70,56 @@ export default function Navbar({ mode, setMode }: NavbarProps) {
               </NavLink>
             ))}
           </div>
+
           <Link 
             to="/contact" 
-            className="px-4 py-2 bg-[var(--color-ink)] text-[var(--color-surface)] rounded-full text-[11px] font-bold uppercase tracking-wider hover:opacity-90 transition-all font-mono"
+            className="hidden md:inline-block px-4 py-2 bg-[var(--color-ink)] text-[var(--color-surface)] rounded-full text-[11px] font-bold uppercase tracking-wider hover:opacity-90 transition-all font-mono"
+          >
+            Get in touch
+          </Link>
+
+          {/* Hamburger Menu Toggle Button (Mobile Only) */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 rounded-full border border-[var(--color-border)] hover:bg-[var(--color-ink)]/[0.05] transition-all text-[var(--color-ink)] focus:outline-none cursor-pointer flex items-center justify-center"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer Dropdown Overlay */}
+      {isOpen && (
+        <div className="absolute top-full left-0 w-full bg-[var(--color-surface)]/95 backdrop-blur-xl border-b border-[var(--color-border)] md:hidden z-40 p-8 flex flex-col gap-6 shadow-2xl transition-all duration-300">
+          <div className="flex flex-col gap-2">
+            {NAV_LINKS.map((link) => (
+              <NavLink 
+                key={link.label} 
+                to={link.href} 
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) => 
+                  `text-xs font-mono uppercase tracking-widest transition-all py-3 border-b border-[var(--color-border)]/10 block ${
+                    isActive 
+                      ? "text-[var(--color-accent)] font-bold" 
+                      : "text-[var(--color-ink-faint)] hover:text-[var(--color-ink)]"
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </div>
+          
+          <Link 
+            to="/contact" 
+            onClick={() => setIsOpen(false)}
+            className="w-full text-center py-4 bg-[var(--color-ink)] text-[var(--color-surface)] rounded-2xl text-[11px] font-bold uppercase tracking-wider hover:opacity-90 transition-all font-mono"
           >
             Get in touch
           </Link>
         </div>
-      </div>
-
-      {/* Creative Floating Navigation Dock (Mobile Only) */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden bg-[var(--color-surface)]/80 backdrop-blur-xl border border-[var(--color-border)] rounded-full px-6 py-3.5 flex items-center gap-6 shadow-2xl shadow-black/50">
-        {NAV_LINKS.map((link) => (
-          <NavLink 
-            key={link.label} 
-            to={link.href} 
-            className={({ isActive }) => 
-              `text-[10px] uppercase tracking-widest font-mono transition-colors font-bold ${
-                isActive 
-                  ? "text-[var(--color-accent)]" 
-                  : "text-[var(--color-ink-faint)] hover:text-[var(--color-ink)]"
-              }`
-            }
-          >
-            {link.label === "Experience" ? "Exp" : link.label}
-          </NavLink>
-        ))}
-      </div>
+      )}
     </nav>
   );
 }
