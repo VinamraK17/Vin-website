@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
 import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
 
 const STATIC_PROJECTS = [
   {
@@ -213,7 +214,7 @@ function MainLayout() {
       <Navbar mode={mode} setMode={setMode} />
       <ScrollToTop />
       
-      <main className="px-6 relative z-10">
+      <main className="px-6 relative z-10 copy-protected">
         <Routes>
           <Route 
             path="/" 
@@ -248,12 +249,16 @@ function MainLayout() {
             path="/contact" 
             element={<Contact handleLinkClick={handleLinkClick} />} 
           />
+          <Route 
+            path="/privacy" 
+            element={<Privacy />} 
+          />
         </Routes>
       </main>
 
       <footer className="max-w-6xl mx-auto px-6 py-12 border-t border-[var(--color-border)] flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex flex-col gap-2">
-          <div className="text-[11px] font-mono tracking-widest text-[var(--color-ink)] opacity-40 uppercase">© 2024 VINAMRA KUMAR. ALL RIGHTS RESERVED.</div>
+          <div className="text-[11px] font-mono tracking-widest text-[var(--color-ink)] opacity-40 uppercase">© 2024 VINAMRA KUMAR™. ALL RIGHTS RESERVED.</div>
           {dbStatus && (
             <div className="flex items-center gap-2 group cursor-help" title={`Storage: ${dbStatus.persistence || "Local"}`}>
               <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${dbStatus.status === 'active' ? 'bg-[#4ECC9F]' : 'bg-red-500'}`} />
@@ -265,7 +270,7 @@ function MainLayout() {
           )}
         </div>
         <div className="flex items-center gap-8 opacity-40">
-          <a href="#" className="text-[10px] uppercase tracking-widest text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors">Privacy Policy</a>
+          <Link to="/privacy" className="text-[10px] uppercase tracking-widest text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors">Privacy Policy</Link>
           <a href="#" className="text-[10px] uppercase tracking-widest text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors">Swiss Professional</a>
         </div>
       </footer>

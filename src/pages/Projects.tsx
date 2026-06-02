@@ -2,6 +2,14 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 
+const getSlug = (title: string) => {
+  const t = title.toLowerCase();
+  if (t.includes("nexus")) return "nexus";
+  if (t.includes("genai") || t.includes("strategy")) return "genai";
+  if (t.includes("lido") || t.includes("aviation")) return "lido";
+  return "nexus";
+};
+
 interface ProjectsProps {
   projects: any[];
   isLoadingProjects: boolean;
@@ -80,7 +88,7 @@ export default function Projects({ projects, isLoadingProjects }: ProjectsProps)
                       {project.description}
                     </p>
                     <Link 
-                      to={`/projects/${pathIndex}`} 
+                      to={`/projects/${getSlug(project.title)}`} 
                       className="inline-flex items-center gap-1 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest hover:underline"
                     >
                       Read Case Study & Architecture →

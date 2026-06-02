@@ -22,7 +22,7 @@ export default function Navbar({ mode, setMode }: NavbarProps) {
             to="/" 
             className="font-display font-bold text-xl tracking-tighter text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors"
           >
-            VK.
+            VK™
           </Link>
           
           {/* Mode Switcher */}

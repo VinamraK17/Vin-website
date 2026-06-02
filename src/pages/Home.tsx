@@ -2,6 +2,14 @@ import { motion } from "motion/react";
 import { Mail, Linkedin, Award, Briefcase, Cpu, Users, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
+const getSlug = (title: string) => {
+  const t = title.toLowerCase();
+  if (t.includes("nexus")) return "nexus";
+  if (t.includes("genai") || t.includes("strategy")) return "genai";
+  if (t.includes("lido") || t.includes("aviation")) return "lido";
+  return "nexus";
+};
+
 interface HomeProps {
   projects: any[];
   isLoadingProjects: boolean;
@@ -247,7 +255,7 @@ export default function Home({ projects, isLoadingProjects, handleLinkClick, imp
                     {project.description}
                   </p>
                   <Link 
-                    to={`/projects/${project.id || i}`} 
+                    to={`/projects/${getSlug(project.title)}`} 
                     className="inline-flex items-center gap-1 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   >
                     View Case Study →

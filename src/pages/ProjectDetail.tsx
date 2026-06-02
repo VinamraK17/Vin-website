@@ -18,7 +18,7 @@ interface CaseStudy {
 }
 
 const CASE_STUDIES: Record<string, CaseStudy> = {
-  "0": {
+  "nexus": {
     title: "NEXUS: AI Troubleshooting",
     tag: "Telecom AI",
     stats: "5M+ Users",
@@ -36,7 +36,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
     timeline: "18 Months (2022 - 2024)",
     impactMetric: "2.4M CHF Saved"
   },
-  "1": {
+  "genai": {
     title: "GenAI Strategy & MVP",
     tag: "Digital Transformation",
     stats: "8M+ CHF Saved",
@@ -54,7 +54,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
     timeline: "Ongoing (Launched 2024)",
     impactMetric: "8M+ CHF Value"
   },
-  "2": {
+  "lido": {
     title: "Lido Aviation DMS",
     tag: "Aviation Software",
     stats: "60% Efficiency",
@@ -76,7 +76,15 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
-  const caseStudy = CASE_STUDIES[id || "0"] || CASE_STUDIES["0"];
+  
+  let slug = id || "nexus";
+  
+  // Mapping fallback for legacy numeric routes (if any)
+  if (slug === "0" || slug === "1") slug = "nexus";
+  else if (slug === "2") slug = "genai";
+  else if (slug === "3") slug = "lido";
+
+  const caseStudy = CASE_STUDIES[slug] || CASE_STUDIES["nexus"];
 
   return (
     <div className="min-h-screen pb-32 pt-6">

@@ -187,6 +187,19 @@
             background-color: var(--color-surface);
             border-color: var(--color-border);
         }
+        /* Copy Protection */
+        .copy-protected {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        input, textarea {
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+        }
     </style>
 </head>
 <body class="font-sans">
@@ -195,7 +208,7 @@
     <nav class="glass-nav px-6 py-4">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-6">
-                <a href="#" class="font-display font-bold text-xl tracking-tighter text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors">VK.</a>
+                <a href="#" class="font-display font-bold text-xl tracking-tighter text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors">VK™</a>
                 
                 <!-- Mode Toggle -->
                 <div class="flex items-center border border-[var(--color-border)] rounded-full p-1 bg-[var(--color-ink)]/5 backdrop-blur-md shadow-xl shadow-black/20">
@@ -218,7 +231,7 @@
         </div>
     </nav>
 
-    <main class="px-6 relative z-10">
+    <main class="px-6 relative z-10 copy-protected">
         <!-- Hero Section -->
         <section class="max-w-6xl mx-auto pt-24 pb-32">
             <div class="grid lg:grid-cols-[1fr_400px] gap-20 items-center">
@@ -840,7 +853,7 @@
 
     <footer class="max-w-6xl mx-auto px-6 py-12 border-t border-[var(--color-border)] flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex flex-col gap-2">
-            <div class="text-[10px] font-mono tracking-widest text-[var(--color-ink)] opacity-40 uppercase">© 2024 VINAMRA KUMAR. ALL RIGHTS RESERVED.</div>
+            <div class="text-[10px] font-mono tracking-widest text-[var(--color-ink)] opacity-40 uppercase">© 2024 VINAMRA KUMAR™. ALL RIGHTS RESERVED.</div>
             <div id="db-status-container" class="hidden flex items-center gap-2 group cursor-help">
                 <div id="db-status-dot" class="w-1.5 h-1.5 rounded-full animate-pulse bg-red-500"></div>
                 <span id="db-status-text" class="text-[9px] font-mono uppercase tracking-tighter text-[var(--color-ink)] opacity-30">
@@ -849,7 +862,7 @@
             </div>
         </div>
         <div class="flex items-center gap-8 opacity-40">
-            <a href="#" class="text-[10px] uppercase tracking-widest hover:text-[var(--color-ink)] transition-colors">Privacy</a>
+            <a href="javascript:void(0)" onclick="openPrivacy()" class="text-[10px] uppercase tracking-widest hover:text-[var(--color-ink)] transition-colors">Privacy</a>
             <a href="#" class="text-[10px] uppercase tracking-widest hover:text-[var(--color-ink)] transition-colors text-[var(--color-ink)]">Swiss Professional</a>
         </div>
     </footer>
@@ -862,6 +875,57 @@
             </button>
             <div id="modal-content" class="space-y-8">
                 <!-- Dynamic Content Loaded via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-[32px] border border-[var(--color-border)] p-6 md:p-12 relative text-[var(--color-ink)] bg-[var(--color-surface)] bg-opacity-95">
+            <button onclick="closePrivacy()" class="absolute top-6 right-6 p-2 rounded-full border border-[var(--color-border)] hover:bg-[var(--color-ink)]/10 transition-all cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="space-y-6 mb-12">
+                <span class="text-[9px] font-mono border border-[var(--color-border)] px-3 py-1 rounded-full uppercase tracking-widest text-[var(--color-accent)] font-bold">Legal & Compliance</span>
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-[var(--color-ink)] uppercase leading-none">Privacy Policy & <br/><span class="text-[var(--color-ink)]/30 italic font-light">Terms of Use</span></h2>
+                <p class="text-md text-[var(--color-ink-faint)] font-light leading-relaxed max-w-2xl">This policy outlines how data is handled on this site, GDPR compliance details, and the intellectual property protection (trademarks and copyright) governing the contents.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 p-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-ink)]/[0.01] mb-12">
+                <div class="flex flex-col gap-2">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-[var(--color-accent)]"></i>
+                    <h4 class="font-bold text-sm mt-1">Self-Hosted Security</h4>
+                    <p class="text-[10px] text-[var(--color-ink-faint)] leading-normal font-light">All data is stored locally on a secure private Synology NAS in Switzerland, with no third-party cloud hosting.</p>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <i data-lucide="eye-off" class="w-5 h-5 text-indigo-500/80"></i>
+                    <h4 class="font-bold text-sm mt-1">Zero Tracking Cookies</h4>
+                    <p class="text-[10px] text-[var(--color-ink-faint)] leading-normal font-light">This site does not use third-party analytics cookies. Link clicks are tracked locally and anonymously.</p>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <i data-lucide="lock" class="w-5 h-5 text-emerald-500/80"></i>
+                    <h4 class="font-bold text-sm mt-1">Strict Data Privacy</h4>
+                    <p class="text-[10px] text-[var(--color-ink-faint)] leading-normal font-light">Contact information is used solely to verify identity and communicate with you. It is never sold or shared.</p>
+                </div>
+            </div>
+
+            <div class="space-y-8 text-[var(--color-ink)]/80 font-light leading-relaxed text-sm">
+                <div class="space-y-2">
+                    <h3 class="font-bold text-base text-[var(--color-ink)]">1. Data Collection & Usage</h3>
+                    <p class="pl-4">We collect minimal personal data to ensure communication security and operational integrity:</p>
+                    <ul class="list-disc pl-8 space-y-1 text-xs">
+                        <li><strong>Contact Information:</strong> Collected name, email address, and message. Used solely to enable professional communication.</li>
+                        <li><strong>Usage Analytics:</strong> Anonymous tracking of interactive events (link clicks) stored locally.</li>
+                    </ul>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-bold text-base text-[var(--color-ink)]">2. GDPR & Swiss FADP Compliance</h3>
+                    <p class="pl-4">Aligned with Swiss Federal Act on Data Protection (FADP) and GDPR. You have the right to access and request erasure of your data at any time.</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-bold text-base text-[var(--color-ink)]">3. Intellectual Property & Copy Protection</h3>
+                    <p class="pl-4">All content is the exclusive intellectual property of <strong>Vinamra Kumar™</strong>. Scrape protection measures are applied. Reproduction is strictly prohibited.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -1224,6 +1288,23 @@
                 });
             });
         });
+
+        window.openPrivacy = () => {
+            const modal = document.getElementById('privacy-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                if (window.lucide) lucide.createIcons();
+            }
+        };
+
+        window.closePrivacy = () => {
+            const modal = document.getElementById('privacy-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        };
 
         // Initialize Lucide Icons on load with a fallback
         function initIcons() {
