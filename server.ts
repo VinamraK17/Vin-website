@@ -134,38 +134,91 @@ async function seedData() {
   }
 
   const expCount = await prisma.experience.count();
-  if (expCount === 0) {
-    console.log("Seeding initial experiences...");
+  if (expCount < 5) {
+    console.log("Seeding full experience history...");
+    await prisma.experience.deleteMany({}); // Clear existing to prevent duplicates/conflicts
+    
     await prisma.experience.create({
       data: {
         company: "Sunrise GmbH",
         role: "Manager - Digital Transformation",
         period: "03/2024 – Present",
         location: "Zurich, CH",
-        description: "Orchestrating high-level digital product strategy across six cross-functional journey teams.",
+        description: "Orchestrating high-level digital product strategy across six cross-functional journey teams. Bridging business needs, IT architecture, and emerging tech to redefine customer engagement.",
         achievements: [
-          "People Leadership: Leading 6 cross-functional journey teams.",
-          "C-Level Engagement: Regular reporting to executive leadership.",
-          "Delivery: Secured 8M+ CHF in annual efficiency savings.",
-          "Optimized the digital log-in, boosting NPS from 70% to 90%."
+          "People Leadership: Leading 6 cross-functional journey teams (UI/UX, Dev, QA, Biz) to unify the digital experience.",
+          "C-Level Engagement: Regular reporting and strategy alignment with executive leadership to drive multi-year transformation goals.",
+          "Delivery: Secured 8M+ CHF in annual efficiency savings through strategic GenAI integrations and process automation.",
+          "Optimized the digital log-in and authentication journey, boosting NPS from 70% to 90%."
         ],
         order: 0
       }
     });
-    // Add rest of experiences... (I'll keep it short for the seed to save tokens, the user can add more)
+
     await prisma.experience.create({
       data: {
         company: "Sunrise GmbH",
         role: "Product Owner (Digital Transformation)",
         period: "09/2022 – 02/2024",
         location: "Zurich, CH",
-        description: "Spearheaded the 'Digital First' initiative for technical support.",
+        description: "Spearheaded the 'Digital First' initiative for technical support, managing a core agile team focused on proactive service and self-care automation.",
         achievements: [
-          "Delivered 2.4M CHF additional cost savings.",
-          "Launched 'NEXUS', the first AI-driven troubleshooting platform.",
-          "Achieved a 20% year-on-year improvement in digital resolution rates."
+          "Delivered 2.4M CHF additional cost savings through streamlined support flows and 'Digital First' initiatives.",
+          "Launched 'NEXUS', the first AI-driven troubleshooting platform, serving 5M+ customers with zero downtime delivery.",
+          "Achieved a 20% year-on-year improvement in digital support resolution rates through data-driven prioritization.",
+          "Led People Development for a core agile team of 15+ engineers and designers."
         ],
         order: 1
+      }
+    });
+
+    await prisma.experience.create({
+      data: {
+        company: "LSY AG / Lufthansa Systems",
+        role: "Product Owner",
+        period: "03/2018 – 08/2022",
+        location: "Zurich, CH",
+        description: "Led development for state-of-the-art aviation navigation systems and Data Management Suites (DMS), coordinating between Zurich and Gdansk engineering hubs.",
+        achievements: [
+          "Revolutionized aviation data production cycles, reducing turnaround from 5 days to 2 days (60% efficiency gain).",
+          "Exceeded annual cost-saving targets by 40% through infrastructure modernization and lean product processes.",
+          "Successfully navigated complex transition of legacy monoliths to cloud-ready microservices.",
+          "Maintained a 0-incident record for safety-critical navigation software updates."
+        ],
+        order: 2
+      }
+    });
+
+    await prisma.experience.create({
+      data: {
+        company: "Lufthansa Systems (via External Partnership)",
+        role: "Product Manager – Navigation Services",
+        period: "05/2014 – 02/2018",
+        location: "Zurich, CH",
+        description: "Bridged the gap between airline operational requirements and technical engineering for flight navigation databases and aeronautical maps.",
+        achievements: [
+          "Streamlined requirement gathering processes for major European airline customers.",
+          "Reduced navigation database errors by introducing automated validation checks during the PM review phase.",
+          "Coordinated cross-border releases for Lufthansa Group's Lido/Navigation suite."
+        ],
+        order: 3
+      }
+    });
+
+    await prisma.experience.create({
+      data: {
+        company: "Airports Authority of India (AAI)",
+        role: "Manager Operations – Air Traffic Control",
+        period: "04/2005 – 04/2014",
+        location: "India",
+        description: "Commanded radar-based operations in safety-regulated, high-stress aviation environments. Managed mission-critical systems and led tactical decision-making.",
+        achievements: [
+          "People Leadership: Directed operational shifts and mentored over 50 junior controllers in mission-critical environments.",
+          "Stakeholder Engagement: Coordinated with international aviation bodies and regulatory agencies for airspace design.",
+          "Delivery: Led implementation of standardized procedural updates that increased runway throughput by 10%.",
+          "Managed safe traffic flow for up to 60 aircraft per hour with zero-error performance under pressure."
+        ],
+        order: 4
       }
     });
   }
