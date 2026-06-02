@@ -34,7 +34,8 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/prisma ./prisma
 # Copy portfolio.html if it's used outside dist
 COPY --from=builder /app/portfolio.html ./portfolio.html
-COPY --from=builder /app/build_error_log.txt* ./
+COPY --from=builder /app/build_error_log.txt ./build_error_log.txt
+
 
 
 # Expose the application port
