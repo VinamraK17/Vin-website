@@ -4,8 +4,8 @@ FROM node:20-slim AS builder
 # Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy package file
+COPY package.json ./
 
 # Install dependencies
 RUN npm install
@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 
 # Copy built assets and server from builder
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/package.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/prisma ./prisma
 # Copy portfolio.html if it's used outside dist
