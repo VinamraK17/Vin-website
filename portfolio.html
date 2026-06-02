@@ -454,9 +454,12 @@
                             <span class="text-[9px] font-mono bg-[var(--color-ink)] text-[var(--color-surface)] px-3 py-1 rounded-full uppercase tracking-widest font-bold">5M+ Users</span>
                         </div>
                         <h3 class="text-2xl font-display font-medium mb-4">NEXUS AI Platform</h3>
-                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity">
                             Spearheaded the first AI-driven troubleshooting engine for technical support at Sunrise GmbH, significantly reducing support volume.
                         </p>
+                        <button onclick="openCaseStudy(0)" class="inline-flex items-center gap-1 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:underline">
+                            View Case Study →
+                        </button>
                     </div>
                 </div>
                 <!-- Project 2: GenAI -->
@@ -469,9 +472,12 @@
                             <span class="text-[9px] font-mono bg-[var(--color-ink)] text-[var(--color-surface)] px-3 py-1 rounded-full uppercase tracking-widest font-bold">8M+ CHF Saved</span>
                         </div>
                         <h3 class="text-2xl font-display font-medium mb-4">GenAI Strategy</h3>
-                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity">
                             Orchestrating the roadmap for large language models to automate customer journeys and boost efficiency in digital transformation.
                         </p>
+                        <button onclick="openCaseStudy(1)" class="inline-flex items-center gap-1 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:underline">
+                            View Case Study →
+                        </button>
                     </div>
                 </div>
                 <!-- Project 3: Lido -->
@@ -484,9 +490,12 @@
                             <span class="text-[9px] font-mono bg-[var(--color-ink)] text-[var(--color-surface)] px-3 py-1 rounded-full uppercase tracking-widest font-bold">60% Gain</span>
                         </div>
                         <h3 class="text-2xl font-display font-medium mb-4">Lido DMS Evolution</h3>
-                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity">
                             Led the transformation of legacy flight navigation data management systems into high-efficiency microservices for Lufthansa Systems.
                         </p>
+                        <button onclick="openCaseStudy(2)" class="inline-flex items-center gap-1 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:underline">
+                            View Case Study →
+                        </button>
                     </div>
                 </div>
             </div>
@@ -845,7 +854,171 @@
         </div>
     </footer>
 
+    <!-- Case Study Modal -->
+    <div id="case-study-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-[32px] border border-[var(--color-border)] p-6 md:p-12 relative text-[var(--color-ink)] bg-[var(--color-surface)]">
+            <button onclick="closeCaseStudy()" class="absolute top-6 right-6 p-2 rounded-full border border-[var(--color-border)] hover:bg-[var(--color-ink)]/10 transition-all cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div id="modal-content" class="space-y-8">
+                <!-- Dynamic Content Loaded via JS -->
+            </div>
+        </div>
+    </div>
+
     <script type="module">
+        const CASE_STUDIES = [
+            {
+                title: "NEXUS: AI Troubleshooting",
+                tag: "Telecom AI",
+                stats: "5M+ Users",
+                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200",
+                description: "Spearheaded the first AI-driven troubleshooting engine for technical support at Sunrise GmbH, significantly reducing support volume and improving user experience.",
+                challenge: "Support agents were overwhelmed with repetitive Wi-Fi and network diagnostics calls. Traditional diagnostic tools were fragmented, resulting in high average handling times and low customer satisfaction.",
+                solution: "Designed and launched 'NEXUS', a proactive, automated diagnostics portal. NEXUS interfaces directly with device telemetry APIs, runs automated line checks, and uses rule-based and predictive models to guide customers through self-resolution steps.",
+                results: [
+                    "Secured 2.4M CHF in annual operational savings.",
+                    "Achieved a 20% year-on-year improvement in digital self-care resolution.",
+                    "Optimized authentication and connection flow, boosting customer NPS from 70% to 90%."
+                ],
+                techStack: ["React", "TypeScript", "Node.js", "GraphQL", "Telemetry APIs", "Kubernetes", "Splunk"],
+                role: "Lead Product Owner (Digital Support Automation)",
+                timeline: "18 Months (2022 - 2024)",
+                impactMetric: "2.4M CHF Saved"
+            },
+            {
+                title: "GenAI Strategy & MVP",
+                tag: "Digital Transformation",
+                stats: "8M+ CHF Saved",
+                image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
+                description: "Orchestrated the multi-year GenAI roadmap to automate high-volume customer journeys, defining the convergence of LLMs and business strategy.",
+                challenge: "Traditional IVRs and chatbots had rigid decision trees, leading to poor customer experiences. Implementing LLMs required solving issues related to hallucinations, GDPR compliance, and complex integration with legacy billing platforms.",
+                solution: "Devised a comprehensive GenAI roadmap, aligning C-level executives. Launched safe MVP trials utilizing Retrieval-Augmented Generation (RAG) and custom LLM gateway guardrails for privacy and safety.",
+                results: [
+                    "Delivered 8M+ CHF in annual efficiency savings through automated process execution.",
+                    "Successfully automated 6 high-volume, multi-turn customer care journeys.",
+                    "Maintained a near-zero hallucination rate using strict contextual embeddings and deterministic fallbacks."
+                ],
+                techStack: ["OpenAI API", "LangChain", "Vector Databases", "Python", "React", "GDPR Guardrails", "Azure Cloud"],
+                role: "Manager - Digital Transformation Strategy",
+                timeline: "Ongoing (Launched 2024)",
+                impactMetric: "8M+ CHF Value"
+            },
+            {
+                title: "Lido Aviation DMS",
+                tag: "Aviation Software",
+                stats: "60% Efficiency",
+                image: "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&fit=crop&q=80&w=1200",
+                description: "Led the transformation of legacy flight navigation data management systems (DMS) into high-efficiency microservices for Lufthansa Systems (LSY AG).",
+                challenge: "Safety-critical flight navigation databases were produced using monolithic legacy applications. The cycle time to process and package worldwide aeronautical updates was 5 days, leaving no room for operational flexibility.",
+                solution: "Led a cross-border agile team of 15+ engineers to rebuild the data pipeline. Transitioned the monolith to cloud-native microservices, automated GIS verification layers, and created a unified navigation console.",
+                results: [
+                    "Reduced navigation database turnaround cycle from 5 days to 2 days (60% efficiency gain).",
+                    "Achieved zero data incidents across critical global airline update releases.",
+                    "Exceeded annual cost-saving targets by 40% through infrastructure modernization."
+                ],
+                techStack: ["Java / Spring Boot", "Docker", "Kafka", "PostgreSQL", "GIS Engine", "React Admin Portal"],
+                role: "Product Owner (Navigation Services)",
+                timeline: "4 Years (2018 - 2022)",
+                impactMetric: "60% Turnaround Gain"
+            }
+        ];
+
+        window.openCaseStudy = (index) => {
+            const data = CASE_STUDIES[index];
+            if (!data) return;
+
+            const modal = document.getElementById('case-study-modal');
+            const content = document.getElementById('modal-content');
+            if (!modal || !content) return;
+
+            content.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <span class="text-[9px] font-mono border border-[var(--color-border)] px-3 py-1 rounded-full uppercase tracking-widest text-[var(--color-accent)] font-bold">${data.tag}</span>
+                        <span class="text-[9px] font-mono bg-[var(--color-ink)] text-[var(--color-surface)] px-3 py-1 rounded-full uppercase tracking-widest font-bold">${data.stats}</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-[var(--color-ink)] uppercase leading-none">${data.title}</h2>
+                    <p class="text-lg text-[var(--color-ink-faint)] font-light leading-relaxed">${data.description}</p>
+                </div>
+
+                <div class="h-[300px] rounded-2xl overflow-hidden relative">
+                    <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-surface)] to-transparent"></div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 p-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-ink)]/[0.01]">
+                    <div>
+                        <span class="text-[9px] font-mono uppercase tracking-wider text-[var(--color-ink-faint)]">Role Played</span>
+                        <p class="text-xs font-semibold mt-1">${data.role}</p>
+                    </div>
+                    <div>
+                        <span class="text-[9px] font-mono uppercase tracking-wider text-[var(--color-ink-faint)]">Timeline</span>
+                        <p class="text-xs font-semibold mt-1">${data.timeline}</p>
+                    </div>
+                    <div>
+                        <span class="text-[9px] font-mono uppercase tracking-wider text-[var(--color-ink-faint)]">Business Impact</span>
+                        <p class="text-xs font-semibold text-[var(--color-accent)] mt-1">${data.impactMetric}</p>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="space-y-3">
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <i data-lucide="shield-alert" class="w-5 h-5 text-red-500/70"></i>
+                            The Challenge
+                        </h3>
+                        <p class="text-sm text-[var(--color-ink)]/70 font-light leading-relaxed pl-7">${data.challenge}</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-5 h-5 text-[var(--color-accent)]"></i>
+                            The Strategy & Solution
+                        </h3>
+                        <p class="text-sm text-[var(--color-ink)]/70 font-light leading-relaxed pl-7">${data.solution}</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-5 h-5 text-emerald-500/70"></i>
+                            Key Deliverables & Outcomes
+                        </h3>
+                        <div class="pl-7 space-y-3">
+                            ${data.results.map(r => `
+                                <div class="flex gap-3 items-start bg-[var(--color-ink)]/[0.01] p-3 rounded-xl border border-[var(--color-border)]">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span class="text-xs text-[var(--color-ink)]/80">${r}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <i data-lucide="server" class="w-5 h-5 text-blue-500/70"></i>
+                            Technical Stack & Tools
+                        </h3>
+                        <div class="pl-7 flex flex-wrap gap-2">
+                            ${data.techStack.map(t => `<span class="px-3 py-1.5 bg-[var(--color-ink)]/[0.04] text-[var(--color-ink)] rounded-lg text-[10px] font-mono border border-[var(--color-border)]">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            if (window.lucide) lucide.createIcons();
+        };
+
+        window.closeCaseStudy = () => {
+            const modal = document.getElementById('case-study-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        };
+
         // Project Filtering JavaScript Logic
         window.filterProjects = (category) => {
             const cards = document.querySelectorAll('.project-card');
