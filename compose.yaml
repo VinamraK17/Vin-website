@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # 1. MariaDB Database (Mapped to portfolio-db)
+  portfolio-db:
+    image: mariadb:10.11
+    container_name: portfolio-db
+    environment:
+      MARIADB_ROOT_PASSWORD: change_me_secure_root_password
+      MARIADB_DATABASE: portfolio
+      MARIADB_USER: portfolio_user
+      MARIADB_PASSWORD: change_me_secure_user_password
+    volumes:
+      - /volume1/docker/portfolio-db:/var/lib/mysql
+    networks:
+      - portfolio-network
+    restart: always
+
+  # 2. Portfolio Web Server (Exposed directly from GitHub)
+  portfolio-web:
+    build: .
+    container_name: portfolio-web
+    depends_on:
+      - portfolio-db
+    environment:
+      - DATABASE_URL=mysql://portfolio_user:change_me_secure_user_password@portfolio-db:3306/portfolio
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"
+    networks:
+      - portfolio-network
+    restart: always
+
+networks:
+  portfolio-network:
+    driver: bridge
