@@ -8,7 +8,7 @@ services:
       MARIADB_USER: portfolio_user
       MARIADB_PASSWORD: YOUR_USER_PASSWORD_HERE
     volumes:
-      - /volume1/docker/portfolio-db:/var/lib/mysql
+      - portfolio-db-data:/var/lib/mysql
     networks:
       - portfolio-network
     restart: always
@@ -26,6 +26,9 @@ services:
     networks:
       - portfolio-network
     restart: always
+
+volumes:
+  portfolio-db-data:
 
 networks:
   portfolio-network:
