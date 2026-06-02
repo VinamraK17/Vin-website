@@ -73,6 +73,25 @@ export default function Navbar({ mode, setMode }: NavbarProps) {
           </Link>
         </div>
       </div>
+
+      {/* Creative Floating Navigation Dock (Mobile Only) */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden bg-[var(--color-surface)]/80 backdrop-blur-xl border border-[var(--color-border)] rounded-full px-6 py-3.5 flex items-center gap-6 shadow-2xl shadow-black/50">
+        {NAV_LINKS.map((link) => (
+          <NavLink 
+            key={link.label} 
+            to={link.href} 
+            className={({ isActive }) => 
+              `text-[10px] uppercase tracking-widest font-mono transition-colors font-bold ${
+                isActive 
+                  ? "text-[var(--color-accent)]" 
+                  : "text-[var(--color-ink-faint)] hover:text-[var(--color-ink)]"
+              }`
+            }
+          >
+            {link.label === "Experience" ? "Exp" : link.label}
+          </NavLink>
+        ))}
+      </div>
     </nav>
   );
 }

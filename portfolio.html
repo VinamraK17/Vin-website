@@ -228,8 +228,16 @@
                 </div>
                 <a href="#contact" class="px-5 py-2 bg-[var(--color-ink)] text-[var(--color-surface)] rounded-full text-[11px] font-bold uppercase tracking-wider hover:bg-[var(--color-ink)]/90 transition-all">Get in touch</a>
             </div>
-        </div>
     </nav>
+
+    <!-- Creative Floating Navigation Dock (Mobile Only) -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden bg-[var(--color-surface)]/80 backdrop-blur-xl border border-[var(--color-border)] rounded-full px-6 py-3.5 flex items-center gap-6 shadow-2xl shadow-black/50">
+        <a href="#" class="mobile-dock-link text-[10px] uppercase tracking-widest font-mono font-bold text-[var(--color-accent)] transition-colors">Home</a>
+        <a href="#projects" class="mobile-dock-link text-[10px] uppercase tracking-widest font-mono font-bold text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-colors">Projects</a>
+        <a href="#experience" class="mobile-dock-link text-[10px] uppercase tracking-widest font-mono font-bold text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-colors">Exp</a>
+        <a href="#expertise" class="mobile-dock-link text-[10px] uppercase tracking-widest font-mono font-bold text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-colors">Tools</a>
+        <a href="#contact" class="mobile-dock-link text-[10px] uppercase tracking-widest font-mono font-bold text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-colors">Contact</a>
+    </div>
 
     <main class="px-6 relative z-10 copy-protected">
         <!-- Hero Section -->
@@ -1374,6 +1382,31 @@
                 }
             }
         };
+
+        // ScrollSpy for mobile floating dock
+        const sections = document.querySelectorAll('section, header, footer');
+        const dockLinks = document.querySelectorAll('.mobile-dock-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 250) {
+                    current = section.getAttribute('id') || '';
+                }
+            });
+            
+            dockLinks.forEach(link => {
+                link.classList.remove('text-[var(--color-accent)]');
+                link.classList.add('text-[var(--color-ink-faint)]');
+                const href = link.getAttribute('href');
+                if (href === `#${current}` || (current === '' && href === '#')) {
+                    link.classList.add('text-[var(--color-accent)]');
+                    link.classList.remove('text-[var(--color-ink-faint)]');
+                }
+            });
+        });
 
         // Initialize Lucide Icons on load with a fallback
         function initIcons() {
