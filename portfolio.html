@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinamra Kumar | Product Leadership & AI Strategy</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="MIT-certified Product Leader with 20+ years of experience directing digital transformation, GenAI strategy, and product roadmap execution." />
+    <meta name="keywords" content="Vinamra Kumar, Product Management, Digital Transformation, AI Strategy, GenAI Roadmap, Product Leader, MIT, Sunrise, Lufthansa Systems, Air Traffic Control" />
+    <meta name="author" content="Vinamra Kumar" />
+    <link rel="canonical" href="https://vinamrakumar.com/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vinamrakumar.com/" />
+    <meta property="og:title" content="Vinamra Kumar | Product Leadership & AI Strategy" />
+    <meta property="og:description" content="MIT-certified Product Leader with 20+ years of experience directing digital transformation, GenAI strategy, and product roadmap execution." />
+    <meta property="og:image" content="https://vinamrakumar.com/hero_hq.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://vinamrakumar.com/" />
+    <meta property="twitter:title" content="Vinamra Kumar | Product Leadership & AI Strategy" />
+    <meta property="twitter:description" content="MIT-certified Product Leader with 20+ years of experience directing digital transformation, GenAI strategy, and product roadmap execution." />
+    <meta property="twitter:image" content="https://vinamrakumar.com/hero_hq.jpg" />
+
+    <!-- Structured Data JSON-LD (Person Schema) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Vinamra Kumar",
+      "jobTitle": "Manager - Digital Transformation",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Sunrise GmbH"
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Massachusetts Institute of Technology (MIT)"
+      },
+      "url": "https://vinamrakumar.com/",
+      "sameAs": [
+        "https://www.linkedin.com/in/vinamrakumar"
+      ],
+      "description": "MIT-certified Product Leader with 20+ years of experience leading complex, high-impact digital products and AI strategies."
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@0.424.0/dist/umd/lucide.min.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              accent: '#4ecca3',
+              surface: '#050505',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        :root {
+            --color-surface: #050505;
+            --color-ink: #ffffff;
+            --color-ink-faint: rgba(255, 255, 255, 0.4);
+            --color-accent: #4ecca3;
+            --color-border: rgba(255, 255, 255, 0.1);
+            --color-glass: rgba(255, 255, 255, 0.05);
+            --bg-gradient: radial-gradient(circle at 0% 0%, #1a1a2e 0%, #050505 50%), radial-gradient(circle at 100% 100%, #16213e 0%, #050505 50%);
+            color-scheme: dark;
+        }
+
+        [data-mode="light"] {
+            --color-surface: #f8f9fa;
+            --color-ink: #1a1a1a;
+            --color-ink-faint: #6c757d;
+            --color-border: rgba(0, 0, 0, 0.1);
+            --color-glass: rgba(255, 255, 255, 0.8);
+            --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color-scheme: light;
+        }
+
+        [data-theme="luxury"] { --color-accent: #d4af37; }
+        [data-theme="luxury"][data-mode="dark"] { --bg-gradient: radial-gradient(circle at 0% 0%, #1a1600 0%, #050505 50%), radial-gradient(circle at 100% 100%, #1a1600 0%, #050505 50%); }
+
+        [data-theme="cyber"] { --color-accent: #ff00ff; }
+        [data-theme="cyber"][data-mode="dark"] { --bg-gradient: radial-gradient(circle at 0% 0%, #1a001a 0%, #050505 50%), radial-gradient(circle at 100% 100%, #001a1a 0%, #050505 50%); }
+
+        body {
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--color-ink);
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .glass {
+            background: var(--color-glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--color-border);
+        }
+
+        .glass-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .display-gradient {
+            background: linear-gradient(to right, var(--color-ink), var(--color-ink-faint));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: var(--color-ink); /* Fallback */
+        }
+
+        [data-mode="light"] .display-gradient {
+            background: none;
+            -webkit-text-fill-color: initial;
+            color: var(--color-ink);
+        }
+
+        .section-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+        }
+
+        .pill-tag {
+            padding: 4px 12px;
+            font-size: 11px;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            color: var(--color-ink-faint);
+            transition: all 0.3s;
+        }
+        .pill-tag:hover {
+            color: var(--color-ink);
+            border-color: var(--color-ink);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #252525;
+            border-radius: 10px;
+        }
+        input, textarea {
+            color: var(--color-ink) !important;
+            background-color: var(--color-glass) !important;
+        }
+        input::placeholder, textarea::placeholder {
+            color: var(--color-ink-faint) !important;
+            opacity: 0.5;
+        }
+        .theme-switcher-container {
+            background-color: var(--color-surface);
+            border-color: var(--color-border);
+        }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Navigation -->
+    <nav class="glass-nav px-6 py-4">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-6">
+                <a href="#" class="font-display font-bold text-xl tracking-tighter text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors">VK.</a>
+                
+                <!-- Mode Toggle -->
+                <div class="flex items-center border border-[var(--color-border)] rounded-full p-1 bg-[var(--color-ink)]/5 backdrop-blur-md shadow-xl shadow-black/20">
+                   <button onclick="toggleMode()" class="p-1.5 rounded-full text-[var(--color-ink)]/40 hover:text-[var(--color-ink)] transition-all flex items-center gap-2 px-3" title="Toggle Mode">
+                       <i data-lucide="sun" id="mode-icon" class="w-3.5 h-3.5"></i>
+                       <span id="mode-label" class="text-[10px] font-mono font-bold uppercase tracking-widest">Light</span>
+                   </button>
+                </div>
+            </div>
+            <div class="flex items-center gap-8">
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Home</a>
+                    <a href="#projects" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Projects</a>
+                    <a href="#experience" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Experience</a>
+                    <a href="#expertise" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Expertise</a>
+                    <a href="#contact" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Contact</a>
+                </div>
+                <a href="#contact" class="px-5 py-2 bg-[var(--color-ink)] text-[var(--color-surface)] rounded-full text-[11px] font-bold uppercase tracking-wider hover:bg-[var(--color-ink)]/90 transition-all">Get in touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="px-6 relative z-10">
+        <!-- Hero Section -->
+        <section class="max-w-6xl mx-auto pt-24 pb-32">
+            <div class="grid lg:grid-cols-[1fr_400px] gap-20 items-center">
+                <div>
+                    <span class="section-label mb-8 block">Digital Transformation Leader</span>
+                    <h1 class="text-7xl md:text-9xl font-bold mb-8 leading-[0.85] tracking-tighter uppercase display-gradient">
+                        Vinamra <br> Kumar
+                    </h1>
+                    <p class="max-w-2xl text-xl text-[var(--color-ink)]/50 font-light leading-relaxed mb-8">
+                        MIT-certified Product Leader with 20+ years of experience leading complex, high-impact digital 
+                        products and AI strategies. Specialized in bridging business strategy with technical execution 
+                        to unlock multi-million dollar value in telecom and aviation sectors.
+                    </p>
+                    <p class="max-w-xl text-sm text-[var(--color-ink)]/30 font-light leading-relaxed mb-12 italic border-l-2 border-[var(--color-accent)]/20 pl-6">
+                        Currently driving digital evolution at Sunrise GmbH, following a distinguished tenure at 
+                        Lufthansa Systems and early career foundations as an Air Traffic Controller in India.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <a href="#contact" class="flex items-center gap-2 group border border-[var(--color-ink)]/10 px-6 py-3 rounded-2xl hover:bg-[var(--color-ink)]/5 transition-all">
+                            <i data-lucide="mail" class="w-4 h-4 text-[var(--color-ink)]/40 group-hover:text-[var(--color-ink)] transition-colors"></i>
+                            <span class="text-sm font-medium text-[var(--color-ink)]">Contact Me</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/vinamrakumar" target="_blank" class="flex items-center gap-2 group border border-[var(--color-ink)]/10 px-6 py-3 rounded-2xl hover:bg-[var(--color-ink)]/5 transition-all">
+                            <i data-lucide="linkedin" class="w-4 h-4 text-[var(--color-ink-faint)] group-hover:text-[var(--color-ink)] transition-colors"></i>
+                            <span class="text-sm font-medium text-[var(--color-ink)]">LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative aspect-square">
+                    <div class="absolute inset-0 rounded-full border-2 border-[var(--color-ink)]/5 animate-[spin_30s_linear_infinite]"></div>
+                    <div class="absolute inset-4 rounded-full border border-[var(--color-ink)]/10"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-[85%] h-[85%] rounded-full glass overflow-hidden border-2 border-[var(--color-ink)]/20">
+                           <img src="hero_hq.jpg" alt="Vinamra Kumar" class="w-full h-full object-cover object-top" loading="eager">
+                        </div>
+                    </div>
+                    <div class="absolute top-10 right-0 w-16 h-16 glass rounded-2xl flex items-center justify-center border border-[var(--color-ink)]/20">
+                        <i data-lucide="award" class="w-8 h-8 text-[var(--color-accent)]"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Deep Dive -->
+        <section id="about" class="max-w-6xl mx-auto pb-32">
+            <div class="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
+                <div>
+                    <span class="section-label">Professional Bio</span>
+                    <h2 class="text-4xl font-bold text-[var(--color-ink)] tracking-tight leading-tight uppercase">
+                        20+ Years of <br>
+                        <span class="text-[var(--color-ink)]/30 italic font-light">Product Leadership.</span>
+                    </h2>
+                </div>
+                <div class="text-lg text-[var(--color-ink)]/60 font-light leading-relaxed space-y-6">
+                    <p>
+                        Product Manager with a proven track record of owning product vision, 
+                        driving cross-functional execution, and delivering measurable outcomes in 
+                        ambiguous and evolving contexts. I specialize in AI-driven product development, 
+                        including GenAI-powered customer assistance platforms.
+                    </p>
+                    <p>
+                        My experience spans highly regulated, large-scale environments like telecom 
+                        (Sunrise GmbH) and aviation (Lufthansa Systems), where I lead teams across IT, 
+                        engineering, and business to design and validate MVPs from concept to rollout.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="max-w-6xl mx-auto pb-32">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="border-l border-[var(--color-ink)]/10 pl-6">
+                    <div class="text-3xl md:text-5xl font-display font-medium mb-1 tracking-tighter">CHF 10M</div>
+                    <div class="text-[10px] uppercase tracking-widest text-[var(--color-accent)] mb-1">Financial Impact</div>
+                    <div class="text-[11px] text-[var(--color-ink)]/40 leading-tight">
+                        <div class="flex flex-col gap-1">
+                            <span>10M USD</span>
+                            <span>100Cr INR</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-l border-[var(--color-ink)]/10 pl-6">
+                    <div class="text-3xl md:text-5xl font-display font-medium mb-1 tracking-tighter">20%+</div>
+                    <div class="text-[10px] uppercase tracking-widest text-[var(--color-accent)] mb-1">Cost Reduction</div>
+                    <div class="text-[11px] text-[var(--color-ink)]/20 italic">CAPEX & OPEX</div>
+                </div>
+                <div class="border-l border-[var(--color-ink)]/10 pl-6">
+                    <div class="text-3xl md:text-5xl font-display font-medium mb-1 tracking-tighter">20+ Yrs</div>
+                    <div class="text-[10px] uppercase tracking-widest text-[var(--color-accent)] mb-1">Leadership</div>
+                    <div class="text-[11px] text-[var(--color-ink)]/20 italic">Industry Experience</div>
+                </div>
+                <div class="border-l border-[var(--color-ink)]/10 pl-6">
+                    <div class="text-3xl md:text-5xl font-display font-medium mb-1 tracking-tighter">5M+</div>
+                    <div class="text-[10px] uppercase tracking-widest text-[var(--color-accent)] mb-1">Users</div>
+                    <div class="text-[11px] text-[var(--color-ink)]/20 italic">Impacted daily</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trusted By & Endorsements Section -->
+        <section id="credibility" class="max-w-6xl mx-auto pb-32">
+            <div class="text-center mb-16">
+                <span class="section-label inline-block">Strategic Trust & Career Credentials</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-ink)] tracking-tight leading-tight mt-3 uppercase">
+                    Credibility in <span class="text-[var(--color-ink)]/30 italic font-light">High-Impact Environments</span>
+                </h2>
+                <p class="text-[var(--color-ink)]/50 mt-4 max-w-xl mx-auto text-sm">
+                    Demonstrated leadership and verified execution across Swiss telecommunications, aviation safety, and global systems.
+                </p>
+            </div>
+
+            <!-- Corporate Brand Logos Grid -->
+            <div class="glass p-8 md:p-12 rounded-[32px] border border-[var(--color-ink)]/5">
+                <div class="text-center mb-10">
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-[var(--color-ink)]/30 font-mono font-bold">Landmark Organizations & Credentials</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center justify-items-center">
+                    <!-- Sunrise -->
+                    <div class="flex flex-col justify-center p-6 bg-[var(--color-ink)]/[0.01] hover:bg-[var(--color-ink)]/[0.03] rounded-2xl border border-[var(--color-ink)]/5 transition-all w-full h-24 text-center">
+                        <span class="font-sans font-bold text-base text-[var(--color-ink)] tracking-tight">Sunrise GmbH</span>
+                        <span class="text-[9px] text-[var(--color-ink)]/40 uppercase tracking-wider mt-1">Switzerland</span>
+                    </div>
+
+                    <!-- Lufthansa Systems -->
+                    <div class="flex flex-col justify-center p-6 bg-[var(--color-ink)]/[0.01] hover:bg-[var(--color-ink)]/[0.03] rounded-2xl border border-[var(--color-ink)]/5 transition-all w-full h-24 text-center">
+                        <span class="font-sans font-bold text-base text-[var(--color-ink)] tracking-tight">Lufthansa Systems</span>
+                        <span class="text-[9px] text-[var(--color-ink)]/40 uppercase tracking-wider mt-1">LSY AG</span>
+                    </div>
+
+                    <!-- Airports Authority of India -->
+                    <div class="flex flex-col justify-center p-6 bg-[var(--color-ink)]/[0.01] hover:bg-[var(--color-ink)]/[0.03] rounded-2xl border border-[var(--color-ink)]/5 transition-all w-full h-24 text-center">
+                        <span class="font-sans font-bold text-base text-[var(--color-ink)] tracking-tight">AAI</span>
+                        <span class="text-[9px] text-[var(--color-ink)]/40 uppercase tracking-wider mt-1">Airports Authority of India</span>
+                    </div>
+
+                    <!-- MIT Professional -->
+                    <div class="flex flex-col justify-center p-6 bg-[var(--color-ink)]/[0.01] hover:bg-[var(--color-ink)]/[0.03] rounded-2xl border border-[var(--color-ink)]/5 transition-all w-full h-24 text-center">
+                        <span class="font-serif font-bold text-base italic text-[var(--color-ink)] tracking-tight">MIT Professional</span>
+                        <span class="text-[9px] text-[var(--color-ink)]/40 uppercase tracking-wider mt-1">Digital Transformation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Competencies Bento -->
+        <section class="max-w-6xl mx-auto pb-32">
+            <span class="section-label mb-12 block">Core Competencies</span>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glass p-10 rounded-[32px] hover:bg-[var(--color-ink)]/[0.05] transition-all">
+                    <div class="w-12 h-12 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mb-6">
+                        <i data-lucide="briefcase" class="w-6 h-6 text-[var(--color-accent)]"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-6">Leadership & Stakeholders</h3>
+                    <ul class="space-y-4 text-sm text-[var(--color-ink)]/50">
+                        <li class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/40"></div>People Leadership</li>
+                        <li class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/40"></div>C-Level Engagement</li>
+                        <li class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/40"></div>Product Transformation</li>
+                        <li class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/40"></div>Vendor Relations</li>
+                    </ul>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass p-10 rounded-[32px] hover:bg-[var(--color-ink)]/[0.05] transition-all">
+                    <div class="w-12 h-12 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mb-6">
+                        <i data-lucide="cpu" class="w-6 h-6 text-[var(--color-accent)]"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-6">Product Management</h3>
+                    <ul class="space-y-4 text-sm text-[var(--color-ink)]/50">
+                        <li class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/40"></div>Vision & Roadmapping</li>
+                        <li class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/40"></div>Customer Discovery</li>
+                        <li class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/40"></div>AI Tech Stack Deployment</li>
+                        <li class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/40"></div>GTM Strategy</li>
+                    </ul>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass p-10 rounded-[32px] hover:bg-[var(--color-ink)]/[0.05] transition-all">
+                    <div class="w-12 h-12 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="w-6 h-6 text-[var(--color-accent)]"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-6">Delivery & Execution</h3>
+                    <ul class="space-y-4 text-sm text-[var(--color-ink)]/50">
+                        <li class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/40"></div>End-to-End Delivery</li>
+                        <li class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/40"></div>RAID & Risk Management</li>
+                        <li class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/40"></div>KPI & OKR Tracking</li>
+                        <li class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/40"></div>Operational Efficiency</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expert Toolkit Gallery -->
+        <section class="max-w-6xl mx-auto pb-32">
+            <span class="section-label mb-12 block">Management Toolkit</span>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <div class="glass p-4 text-center rounded-xl border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all font-mono text-[10px] text-[var(--color-ink)]/60 tracking-widest font-bold uppercase">JIRA</div>
+                <div class="glass p-4 text-center rounded-xl border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all font-mono text-[10px] text-[var(--color-ink)]/60 tracking-widest font-bold uppercase">CONFLUENCE</div>
+                <div class="glass p-4 text-center rounded-xl border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all font-mono text-[10px] text-[var(--color-ink)]/60 tracking-widest font-bold uppercase">MIRO</div>
+                <div class="glass p-4 text-center rounded-xl border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all font-mono text-[10px] text-[var(--color-ink)]/60 tracking-widest font-bold uppercase">FIGJAM</div>
+                <div class="glass p-4 text-center rounded-xl border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all font-mono text-[10px] text-[var(--color-ink)]/60 tracking-widest font-bold uppercase">TRELLO</div>
+                <div class="glass p-4 text-center rounded-xl border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all font-mono text-[10px] text-[var(--color-ink)]/60 tracking-widest font-bold uppercase">MURAL</div>
+                <div class="glass p-4 text-center rounded-xl border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all font-mono text-[10px] text-[var(--color-ink)]/60 tracking-widest font-bold uppercase">ALM OCTANE</div>
+                <div class="glass p-4 text-center rounded-xl border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all font-mono text-[10px] text-[var(--color-ink)]/60 tracking-widest font-bold uppercase">SURVEYMONKEY</div>
+                <div class="glass p-4 text-center rounded-xl border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all font-mono text-[10px] text-[var(--color-ink)]/60 tracking-widest font-bold uppercase">MENTIMETER</div>
+                <div class="glass p-4 text-center rounded-xl border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all font-mono text-[10px] text-[var(--color-ink)]/60 tracking-widest font-bold uppercase">MS OFFICE</div>
+                <div class="glass p-4 text-center rounded-xl border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all font-mono text-[10px] text-[var(--color-ink)]/60 tracking-widest font-bold uppercase">POWERBI</div>
+                <div class="glass p-4 text-center rounded-xl border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all font-mono text-[10px] text-[var(--color-ink)]/60 tracking-widest font-bold uppercase">AZURE DEVOPS</div>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section id="projects" class="max-w-6xl mx-auto pb-32">
+            <span class="section-label mb-6 block">Featured Projects & Designs</span>
+            
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap gap-2.5 mt-6 mb-10" id="project-filters">
+                <button onclick="filterProjects('All')" class="filter-btn px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-widest transition-all border bg-[var(--color-ink)] text-[var(--color-surface)] border-[var(--color-ink)] shadow-md">All</button>
+                <button onclick="filterProjects('Telecom AI')" class="filter-btn px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-widest transition-all border bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]">Telecom AI</button>
+                <button onclick="filterProjects('Aviation Software')" class="filter-btn px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-widest transition-all border bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]">Aviation Software</button>
+                <button onclick="filterProjects('Digital Transformation')" class="filter-btn px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-widest transition-all border bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]">Digital Transformation</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: NEXUS -->
+                <div data-category="Telecom AI" class="project-card group relative h-[450px] overflow-hidden rounded-[32px] glass border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="NEXUS" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-20" referrerpolicy="no-referrer">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-[9px] font-mono border border-[var(--color-ink)]/20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-widest text-[var(--color-accent)] font-bold">Telecom AI</span>
+                            <span class="text-[9px] font-mono bg-[var(--color-ink)] text-[var(--color-surface)] px-3 py-1 rounded-full uppercase tracking-widest font-bold">5M+ Users</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-medium mb-4">NEXUS AI Platform</h3>
+                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                            Spearheaded the first AI-driven troubleshooting engine for technical support at Sunrise GmbH, significantly reducing support volume.
+                        </p>
+                    </div>
+                </div>
+                <!-- Project 2: GenAI -->
+                <div data-category="Digital Transformation" class="project-card group relative h-[450px] overflow-hidden rounded-[32px] glass border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="GenAI" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-20" referrerpolicy="no-referrer">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-[9px] font-mono border border-[var(--color-ink)]/20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-widest text-[var(--color-accent)] font-bold">Digital Transformation</span>
+                            <span class="text-[9px] font-mono bg-[var(--color-ink)] text-[var(--color-surface)] px-3 py-1 rounded-full uppercase tracking-widest font-bold">8M+ CHF Saved</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-medium mb-4">GenAI Strategy</h3>
+                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                            Orchestrating the roadmap for large language models to automate customer journeys and boost efficiency in digital transformation.
+                        </p>
+                    </div>
+                </div>
+                <!-- Project 3: Lido -->
+                <div data-category="Aviation Software" class="project-card group relative h-[450px] overflow-hidden rounded-[32px] glass border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all">
+                    <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&fit=crop&q=80&w=800" alt="Aviation" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-20" referrerpolicy="no-referrer">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-[9px] font-mono border border-[var(--color-ink)]/20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-widest text-[var(--color-accent)] font-bold">Aviation Software</span>
+                            <span class="text-[9px] font-mono bg-[var(--color-ink)] text-[var(--color-surface)] px-3 py-1 rounded-full uppercase tracking-widest font-bold">60% Gain</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-medium mb-4">Lido DMS Evolution</h3>
+                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                            Led the transformation of legacy flight navigation data management systems into high-efficiency microservices for Lufthansa Systems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="max-w-6xl mx-auto pb-32">
+            <span class="section-label mb-16 block text-center">Selected Career Path</span>
+            <div class="space-y-6">
+                <!-- Sunrise Present -->
+                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
+                    <div class="mb-6 md:mb-0">
+                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">03/2024 – Present</span>
+                        <div class="flex items-center gap-2 text-[var(--color-ink)]/40 text-sm">
+                            <i data-lucide="map-pin" class="w-3 h-3"></i>
+                            <span>Zurich, CH</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-display font-semibold mb-1 group-hover:text-[var(--color-accent)] transition-colors">Manager - Digital Transformation</h3>
+                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">Sunrise GmbH</p>
+                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl mb-8">
+                            Orchestrating high-level digital product strategy across six cross-functional journey teams. Bridging business needs, IT architecture, and emerging tech to redefine customer engagement through C-level alignment and strategic people leadership.
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
+                                <span>People Leadership: Directed 6 cross-functional journey squads.</span>
+                            </div>
+                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
+                                <span>Delivery: 8M+ CHF annual efficiency savings via GenAI.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sunrise Past -->
+                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
+                    <div class="mb-6 md:mb-0">
+                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">09/2022 – 02/2024</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-display font-semibold mb-1 group-hover:text-[var(--color-accent)] transition-colors">Product Owner (Digital Transformation)</h3>
+                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">Sunrise GmbH</p>
+                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl mb-8">
+                            Spearheaded 'Digital First' initiatives for technical support, managing a core agile team of 15+ focused on proactive service and self-care automation with direct delivery accountability.
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
+                                <span>Delivery: 2.4M CHF cost savings through automation.</span>
+                            </div>
+                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
+                                <span>Launched 'NEXUS' serving 5M+ users.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lufthansa Systems -->
+                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
+                    <div class="mb-6 md:mb-0">
+                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">03/2018 – 08/2022</span>
+                        <div class="flex items-center gap-2 text-[var(--color-ink)]/40 text-sm">
+                            <i data-lucide="map-pin" class="w-3 h-3"></i>
+                            <span>Zurich, CH</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-display font-semibold mb-1 group-hover:text-[var(--color-accent)] transition-colors">Product Owner</h3>
+                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">Lufthansa Systems</p>
+                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl mb-6">
+                            Led development for safety-critical aviation navigation systems, coordinating multi-national engineering hubs and delivering high-efficiency data management suites.
+                        </p>
+                        <div class="flex gap-3 text-sm text-[var(--color-ink)]/50">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
+                            <span>Delivery: Reduced turnaround from 5 days to 2 days (60% gain).</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- LSY Consultant -->
+                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
+                    <div class="mb-6 md:mb-0">
+                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">05/2014 – 02/2018</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-display font-semibold mb-1 group-hover:text-[var(--color-accent)] transition-colors">Product Manager – Navigation Services</h3>
+                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">Lufthansa Systems (Consultant)</p>
+                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl">
+                            Bridged the gap between airline operational requirements and technical engineering for flight navigation databases and aeronautical maps. Reduced errors by Introducing automated validation checks.
+                        </p>
+                    </div>
+                </div>
+                <!-- Air Traffic Controller -->
+                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
+                    <div class="mb-6 md:mb-0">
+                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">04/2005 – 04/2014</span>
+                        <div class="flex items-center gap-2 text-[var(--color-ink)]/40 text-sm">
+                            <i data-lucide="map-pin" class="w-3 h-3"></i>
+                            <span>India</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-display font-semibold mb-1 group-hover:text-[var(--color-accent)] transition-colors">Manager Operations – Air Traffic Control</h3>
+                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">Airports Authority of India (AAI)</p>
+                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl mb-8">
+                            Commanded radar-based operations in safety-regulated, high-stress aviation environments. Managed mission-critical systems and led tactical decision-making.
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
+                                <span>People Leadership: Mentored over 50 junior controllers.</span>
+                            </div>
+                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
+                                <span>Delivery: Increased runway throughput by 10%.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section id="expertise" class="max-w-6xl mx-auto pb-32">
+            <div class="grid md:grid-cols-2 gap-20">
+                <div>
+                    <span class="section-label mb-12 block">Core Competencies</span>
+                    <h2 class="text-4xl font-bold mb-12 tracking-tight leading-none text-[var(--color-ink)]">
+                        Innovation at the <br>
+                        <span class="text-[var(--color-ink)]/40 italic font-light">Intersection of IT & Business.</span>
+                    </h2>
+                    <div class="space-y-12">
+                        <div>
+                            <h4 class="text-sm font-semibold uppercase tracking-widest mb-6 text-[var(--color-ink)]/40">Leadership & Strategy</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text-[var(--color-ink)]">People Leadership</span>
+                                <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text-[var(--color-ink)]">C-Level Engagement</span>
+                                <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text-[var(--color-ink)]">Product Roadmapping</span>
+                                <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text-[var(--color-ink)]">Change Management</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold uppercase tracking-widest mb-6 text-[var(--color-ink)]/40">Delivery & Agile</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text-[var(--color-ink)]">End-to-End Delivery</span>
+                                <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text-[var(--color-ink)]">SAFe 6 (Agile at Scale)</span>
+                                <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text(--color-ink)">Stakeholder Management</span>
+                                <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text-[var(--color-ink)]">Operational Efficiency</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass p-12 rounded-[40px]">
+                    <i data-lucide="cpu" class="w-12 h-12 text-[var(--color-accent)]/40 mb-8"></i>
+                    <h3 class="text-3xl font-bold mb-6 italic font-display text-[var(--color-ink)]">GenAI Strategy</h3>
+                    <p class="text-[var(--color-ink)]/50 leading-relaxed mb-8">
+                        Actively leading GenAI-powered transformations, from defining MVP use cases 
+                        to full-scale deployment of LLM systems.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 border-b border-[var(--color-ink)]/5 pb-4">
+                            <span class="text-2xl font-display font-light text-[var(--color-ink)] opacity-20 italic">01</span>
+                            <span class="text-sm text-[var(--color-ink)]">Customer Assistant Platforms</span>
+                        </div>
+                        <div class="flex items-center gap-4 border-b border-[var(--color-ink)]/5 pb-4">
+                            <span class="text-2xl font-display font-light text-[var(--color-ink)] opacity-20 italic">02</span>
+                            <span class="text-sm text-[var(--color-ink)]">AI Deployment Strategy</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="text-2xl font-display font-light text-[var(--color-ink)] opacity-20 italic">03</span>
+                            <span class="text-sm text-[var(--color-ink)]">Data-Driven UX Optimization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Credentials -->
+        <section id="credentials" class="max-w-6xl mx-auto pb-32">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="flex-1">
+                    <span class="section-label mb-8 block">Education</span>
+                    <div class="space-y-8">
+                        <div class="border-l border-[var(--color-ink)]/10 pl-8">
+                            <h4 class="text-xl font-bold mb-1">MIT Professional Education</h4>
+                            <p class="text-[var(--color-ink)]/40 text-sm mb-1">Digital Transformation Certificate</p>
+                            <p class="text-[11px] font-mono text-[var(--color-ink)]/20">2023 – 2024</p>
+                        </div>
+                        <div class="border-l border-[var(--color-ink)]/10 pl-8">
+                            <h4 class="text-xl font-bold mb-1">IMT India</h4>
+                            <p class="text-[var(--color-ink)]/40 text-sm mb-1">PGDM (IT & Marketing)</p>
+                            <p class="text-[11px] font-mono text-[var(--color-ink)]/20">2011 – 2014</p>
+                        </div>
+                        <div class="border-l border-[var(--color-ink)]/10 pl-8 opacity-60">
+                            <h4 class="text-xl font-bold mb-1">Dr. APJ Kalam University</h4>
+                            <p class="text-[var(--color-ink)]/40 text-sm mb-1">B.Tech (Electronics & Communication)</p>
+                            <p class="text-[11px] font-mono text-[var(--color-ink)]/20">2001 – 2005</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <span class="section-label mb-8 block">Certifications</span>
+                    <div class="grid grid-cols-1 gap-4">
+                        <!-- MIT Digital Transformation -->
+                        <div class="glass p-4 rounded-2xl flex items-center gap-4 border border-[var(--color-ink)]/5 bg-[var(--color-ink)]/[0.01] hover:bg-[var(--color-ink)]/[0.02] hover:border-[var(--color-ink)]/10 transition-all">
+                            <div class="w-10 h-10 rounded-xl bg-[var(--color-ink)]/[0.02] border border-[var(--color-ink)]/5 flex items-center justify-center shrink-0">
+                                <i data-lucide="award" class="w-5 h-5 text-[var(--color-accent)] opacity-80"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-[var(--color-ink)]/80 leading-snug">Professional Certificate in Digital Transformation</span>
+                                <span class="text-[11px] text-[var(--color-ink)]/40 mt-0.5">Massachusetts Institute of Technology (MIT)</span>
+                            </div>
+                        </div>
+
+                        <!-- SAFe 6 POPM -->
+                        <div class="glass p-4 rounded-2xl flex items-center gap-4 border border-[var(--color-ink)]/5 bg-[var(--color-ink)]/[0.01] hover:bg-[var(--color-ink)]/[0.02] hover:border-[var(--color-ink)]/10 transition-all">
+                            <div class="w-10 h-10 rounded-xl bg-[var(--color-ink)]/[0.02] border border-[var(--color-ink)]/5 flex items-center justify-center shrink-0">
+                                <i data-lucide="award" class="w-5 h-5 text-[var(--color-accent)] opacity-80"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-[var(--color-ink)]/80 leading-snug">SAFe 6 Product Owner / Product Manager</span>
+                                <span class="text-[11px] text-[var(--color-ink)]/40 mt-0.5">Scaled Agile Academy</span>
+                            </div>
+                        </div>
+
+                        <!-- CSPO -->
+                        <div class="glass p-4 rounded-2xl flex items-center gap-4 border border-[var(--color-ink)]/5 bg-[var(--color-ink)]/[0.01] hover:bg-[var(--color-ink)]/[0.02] hover:border-[var(--color-ink)]/10 transition-all">
+                            <div class="w-10 h-10 rounded-xl bg-[var(--color-ink)]/[0.02] border border-[var(--color-ink)]/5 flex items-center justify-center shrink-0">
+                                <i data-lucide="award" class="w-5 h-5 text-[var(--color-accent)] opacity-80"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-[var(--color-ink)]/80 leading-snug">Certified Scrum Product Owner (CSPO)</span>
+                                <span class="text-[11px] text-[var(--color-ink)]/40 mt-0.5">Scrum Alliance</span>
+                            </div>
+                        </div>
+
+                        <!-- CSM -->
+                        <div class="glass p-4 rounded-2xl flex items-center gap-4 border border-[var(--color-ink)]/5 bg-[var(--color-ink)]/[0.01] hover:bg-[var(--color-ink)]/[0.02] hover:border-[var(--color-ink)]/10 transition-all">
+                            <div class="w-10 h-10 rounded-xl bg-[var(--color-ink)]/[0.02] border border-[var(--color-ink)]/5 flex items-center justify-center shrink-0">
+                                <i data-lucide="award" class="w-5 h-5 text-[var(--color-accent)] opacity-80"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-[var(--color-ink)]/80 leading-snug">Certified Scrum Master (CSM)</span>
+                                <span class="text-[11px] text-[var(--color-ink)]/40 mt-0.5">Scrum Alliance</span>
+                            </div>
+                        </div>
+
+                        <!-- PRINCE2 -->
+                        <div class="glass p-4 rounded-2xl flex items-center gap-4 border border-[var(--color-ink)]/5 bg-[var(--color-ink)]/[0.01] hover:bg-[var(--color-ink)]/[0.02] hover:border-[var(--color-ink)]/10 transition-all">
+                            <div class="w-10 h-10 rounded-xl bg-[var(--color-ink)]/[0.02] border border-[var(--color-ink)]/5 flex items-center justify-center shrink-0">
+                                <i data-lucide="award" class="w-5 h-5 text-[var(--color-accent)] opacity-80"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-[var(--color-ink)]/80 leading-snug">PRINCE2 Practitioner & Foundation</span>
+                                <span class="text-[11px] text-[var(--color-ink)]/40 mt-0.5">PeopleCert / AXELOS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="max-w-6xl mx-auto pb-32">
+            <div class="glass p-8 md:p-20 rounded-[48px] overflow-hidden relative bg-[var(--color-glass)]">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-[var(--color-accent)]/10 blur-[120px] -mr-48 -mt-48 rounded-full"></div>
+                
+                <!-- Header: Full Width -->
+                <div class="mb-16 relative z-10">
+                    <span class="section-label mb-8 block">Get in touch</span>
+                    <h2 class="text-5xl font-bold mb-8 tracking-tighter leading-none uppercase text-[var(--color-ink)]">
+                        Let's discuss <br> your project.
+                    </h2>
+                    <p class="text-[var(--color-ink)]/40 max-w-2xl text-lg">
+                        Have a project in mind? Let's discuss how we can work together to build something exceptional. Open for leadership roles and advisory on digital products and AI strategy.
+                    </p>
+                </div>
+
+                <!-- Content Split: 2 Columns -->
+                <div class="grid md:grid-cols-2 gap-16 relative z-10">
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col gap-4">
+                            <button id="email-reveal-btn" class="flex items-center text-left gap-4 group p-3 rounded-2xl transition-all focus:outline-none cursor-pointer hover:bg-[var(--color-ink)]/[0.02]">
+                                <div class="w-12 h-12 rounded-full border border-[var(--color-ink)]/10 flex items-center justify-center group-hover:border-[var(--color-accent)]/30 transition-all group-hover:shadow-[0_0_15px_rgba(78,204,163,0.2)]">
+                                    <i data-lucide="mail" id="email-icon" class="w-5 h-5 text-[var(--color-ink)]/40"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] uppercase tracking-widest text-[var(--color-ink)]/30">Email (Personal)</div>
+                                    <div id="email-display" class="font-medium text-[var(--color-ink)] transition-all duration-500 font-mono">•••••••@vinamrakumar.com</div>
+                                    <div id="email-hint" class="text-[9px] text-[var(--color-accent)] opacity-60 font-mono">Verify via Form to Access</div>
+                                </div>
+                            </button>
+
+                            <a href="https://www.linkedin.com/in/vinamrakumar" target="_blank" class="flex items-center gap-4 group p-3 rounded-2xl transition-all hover:bg-[var(--color-ink)]/[0.02]">
+                                <div class="w-12 h-12 rounded-full border border-[var(--color-ink)]/10 flex items-center justify-center group-hover:border-[var(--color-accent)]/30 transition-all group-hover:shadow-[0_0_15px_rgba(78,204,163,0.2)]">
+                                    <i data-lucide="linkedin" class="w-5 h-5 text-[var(--color-ink-faint)] group-hover:text-[var(--color-accent)] transition-colors"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] uppercase tracking-widest text-[var(--color-ink-faint)]">LinkedIn</div>
+                                    <div class="font-medium text-[var(--color-ink)] group-hover:text-[var(--color-accent)] transition-colors">vinamrakumar</div>
+                                    <div class="text-[9px] text-[var(--color-ink-faint)] opacity-40 font-mono tracking-tighter">Connect professionally</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="contact-form-container" class="relative">
+                        <form id="contact-form" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label class="text-[10px] uppercase tracking-widest text-[var(--color-ink)]/30 ml-2">Name</label>
+                                    <input required name="name" type="text" placeholder="Full Name" class="w-full bg-[var(--color-ink)]/5 border border-[var(--color-ink)]/10 rounded-2xl px-5 py-4 text-sm focus:outline-none focus:border-[var(--color-accent)]/30 transition-all text-[var(--color-ink)] font-mono">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[10px] uppercase tracking-widest text-[var(--color-ink)]/30 ml-2">Email</label>
+                                    <input required name="email" type="email" placeholder="Email Address" class="w-full bg-[var(--color-ink)]/5 border border-[var(--color-ink)]/10 rounded-2xl px-5 py-4 text-sm focus:outline-none focus:border-[var(--color-accent)]/30 transition-all text-[var(--color-ink)] font-mono">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase tracking-widest text-[var(--color-ink)]/30 ml-2">Message (Required for Verification)</label>
+                                <textarea required name="message" placeholder="Purpose of contact..." class="w-full bg-[var(--color-ink)]/5 border border-[var(--color-ink)]/10 rounded-2xl px-5 py-4 text-sm focus:outline-none focus:border-[var(--color-accent)]/30 transition-all text-[var(--color-ink)] font-mono h-24 resize-none"></textarea>
+                            </div>
+                            <div id="submit-error" class="hidden bg-red-500/10 border border-red-500/20 text-red-500 rounded-2xl px-5 py-4 text-xs font-mono"></div>
+                            <button type="submit" class="w-full py-5 bg-[var(--color-ink)] text-[var(--color-surface)] rounded-[24px] font-bold uppercase tracking-widest text-xs hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 font-mono shadow-lg shadow-[var(--color-accent)]/10">
+                                Quick Connect
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                            </button>
+                        </form>
+                        <div id="success-msg" class="hidden h-full flex flex-col items-center justify-center text-center p-8 bg-[var(--color-accent)]/5 border border-[var(--color-accent)]/20 rounded-[32px]">
+                            <div class="w-16 h-16 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mb-6">
+                                <i data-lucide="check-circle-2" class="w-8 h-8 text-[var(--color-accent)]"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Verification Successful</h3>
+                            <p class="text-[var(--color-ink)]/40 text-sm">Thank you. The personal email has been successfully revealed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="max-w-6xl mx-auto px-6 py-12 border-t border-[var(--color-border)] flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex flex-col gap-2">
+            <div class="text-[10px] font-mono tracking-widest text-[var(--color-ink)] opacity-40 uppercase">© 2024 VINAMRA KUMAR. ALL RIGHTS RESERVED.</div>
+            <div id="db-status-container" class="hidden flex items-center gap-2 group cursor-help">
+                <div id="db-status-dot" class="w-1.5 h-1.5 rounded-full animate-pulse bg-red-500"></div>
+                <span id="db-status-text" class="text-[9px] font-mono uppercase tracking-tighter text-[var(--color-ink)] opacity-30">
+                    DB Offline
+                </span>
+            </div>
+        </div>
+        <div class="flex items-center gap-8 opacity-40">
+            <a href="#" class="text-[10px] uppercase tracking-widest hover:text-[var(--color-ink)] transition-colors">Privacy</a>
+            <a href="#" class="text-[10px] uppercase tracking-widest hover:text-[var(--color-ink)] transition-colors text-[var(--color-ink)]">Swiss Professional</a>
+        </div>
+    </footer>
+
+    <script type="module">
+        // Project Filtering JavaScript Logic
+        window.filterProjects = (category) => {
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (category === 'All' || cardCat === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Update button UI
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                const btnText = btn.textContent.trim();
+                if (btnText === category) {
+                    btn.className = "filter-btn px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-widest transition-all border bg-[var(--color-ink)] text-[var(--color-surface)] border-[var(--color-ink)] shadow-md";
+                } else {
+                    btn.className = "filter-btn px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-widest transition-all border bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]";
+                }
+            });
+        };
+
+        // Initialize Lucide Icons
+        if (window.lucide) lucide.createIcons();
+
+        // Theme Management for HTML
+        window.toggleMode = () => {
+            const current = document.documentElement.getAttribute('data-mode') || 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-mode', next);
+            localStorage.setItem('theme-mode', next);
+            updateThemeUI();
+        };
+
+        function updateThemeUI() {
+            const mode = localStorage.getItem('theme-mode') || 'dark';
+            document.documentElement.setAttribute('data-mode', mode);
+            document.documentElement.setAttribute('data-theme', 'studio');
+            
+            // Update mode icon
+            const icon = document.getElementById('mode-icon');
+            if (icon) {
+                icon.setAttribute('data-lucide', mode === 'dark' ? 'sun' : 'moon');
+                if (window.lucide) lucide.createIcons();
+            }
+
+            // Update mode label if present
+            const label = document.getElementById('mode-label');
+            if (label) {
+                label.textContent = mode === 'dark' ? 'Light' : 'Dark';
+            }
+        }
+        updateThemeUI();
+
+        // Safe tracking helper
+        const trackEvent = (event, details = {}) => {
+            console.log("Event:", event, details);
+            fetch("/api/analytics", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ event, details, timestamp: new Date().toISOString() })
+            }).catch(err => console.warn("Analytics unavailable"));
+        };
+
+        // Smooth Scroll Logic (Avoids Hash in URL)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    history.replaceState(null, '', window.location.pathname);
+                } else {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        history.replaceState(null, '', window.location.pathname);
+                    }
+                }
+            });
+        });
+
+        // Track page view
+        trackEvent("page_view_portfolio");
+
+        // DB Status Check
+        async function updateDbStatus() {
+            try {
+                const res = await fetch('/api/db-status');
+                const data = await res.json();
+                const container = document.getElementById('db-status-container');
+                const dot = document.getElementById('db-status-dot');
+                const text = document.getElementById('db-status-text');
+                
+                if (container && dot && text) {
+                    container.classList.remove('hidden');
+                    if (data.status === 'active') {
+                        dot.classList.add('bg-[#4ECC9F]');
+                        dot.classList.remove('bg-red-500');
+                        text.textContent = `${data.type} Persistent`;
+                        container.title = `Storage: ${data.persistence}`;
+                    } else {
+                        dot.classList.add('bg-red-500');
+                        dot.classList.remove('bg-[#4ECC9F]');
+                        text.textContent = 'Storage Offline';
+                    }
+                }
+            } catch (err) {
+                console.warn("DB status check failed");
+            }
+        }
+        updateDbStatus();
+
+        // Reveal Email logic
+        let isEmailRevealed = false;
+        let revealedEmailAddress = "contact@vinamrakumar.com";
+
+        function showRevealedEmail(emailStr) {
+            revealedEmailAddress = emailStr;
+            isEmailRevealed = true;
+            const display = document.getElementById('email-display');
+            const hint = document.getElementById('email-hint');
+            const emailIcon = document.getElementById('email-icon');
+            if (display) {
+                display.textContent = emailStr;
+                display.classList.add('text-[var(--color-accent)]');
+                if (hint) hint.textContent = "Verified & Accessible";
+                if (emailIcon) {
+                    emailIcon.classList.add('text-[var(--color-accent)]');
+                    emailIcon.classList.remove('text-[var(--color-ink)]/40');
+                }
+            }
+        }
+
+        const emailRevealBtn = document.getElementById('email-reveal-btn');
+        if (emailRevealBtn) {
+            emailRevealBtn.addEventListener('click', () => {
+                if (isEmailRevealed) {
+                    window.location.href = `mailto:${revealedEmailAddress}`;
+                } else {
+                    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+
+        // Clean URL on load
+        if (window.location.hash) {
+            history.replaceState(null, '', window.location.pathname);
+        }
+
+        // Contact Form Logic
+        const form = document.getElementById('contact-form');
+        const successMsg = document.getElementById('success-msg');
+        const errorDiv = document.getElementById('submit-error');
+
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                const originalHtml = btn.innerHTML;
+                
+                if (errorDiv) errorDiv.classList.add('hidden');
+                btn.innerHTML = '<span class="flex items-center gap-2"><svg class="animate-spin h-4 w-4" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Sending...</span>';
+                btn.disabled = true;
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                try {
+                    const response = await fetch('/api/contact', {
+                         method: 'POST',
+                         headers: { 'Content-Type': 'application/json' },
+                         body: JSON.stringify(data)
+                    });
+                    const result = await response.json();
+                    if (result.success) {
+                        form.classList.add('hidden');
+                        successMsg.classList.remove('hidden');
+                        trackEvent("contact_form_success", { name: data.name });
+                        if (result.email) showRevealedEmail(result.email);
+                    } else { throw new Error(result.error || result.message || "Failed to send"); }
+                } catch (err) {
+                    console.error("Form error:", err);
+                    if (errorDiv) {
+                        errorDiv.textContent = `Submission failed: ${err.message}. Please try again.`;
+                        errorDiv.classList.remove('hidden');
+                    }
+                    btn.innerHTML = originalHtml;
+                    btn.disabled = false;
+                    if (window.lucide) lucide.createIcons();
+                }
+            });
+        }
+
+        // Track clicks
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                trackEvent("link_click", { 
+                    label: link.innerText.trim() || link.getAttribute('href'), 
+                    url: link.getAttribute('href') 
+                });
+            });
+        });
+
+        // Initialize Lucide Icons on load with a fallback
+        function initIcons() {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initIcons);
+        window.addEventListener('load', initIcons);
+        // Immediate call as well
+        initIcons();
+    </script>
+</body>
+</html>
