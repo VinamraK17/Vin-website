@@ -16,9 +16,8 @@ COPY . .
 # Generate Prisma client
 RUN npx prisma generate
 
-# Build the application
-RUN npm run build > build.log 2>&1; echo "Build attempted"
-RUN cat build.log && false
+# Build the application (write dummy server if build fails to keep container running for debugging)
+RUN npm run build > build.log 2>&1 || (mkdir -p dist && echo "console.log('Build failed. Please open the terminal in Dockhand and run: cat /app/build.log'); setInterval(() => {}, 1000);" > dist/server.cjs)
 
 # --- Production Image ---
 FROM node:20-slim
