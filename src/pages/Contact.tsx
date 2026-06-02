@@ -247,7 +247,7 @@ export default function Contact({ handleLinkClick }: ContactProps) {
 
                       {/* Schedule meeting */}
                       <a 
-                        href="https://calendar.google.com/calendar/appointments/schedules" 
+                        href="https://calendar.app.google/y12ALrf78egXxniC9" 
                         target="_blank" 
                         rel="noreferrer"
                         className="flex-1 py-4 border border-[var(--color-border)] text-[var(--color-ink)] hover:bg-[var(--color-ink)]/5 rounded-[20px] font-bold uppercase tracking-widest text-xs hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 font-mono"
