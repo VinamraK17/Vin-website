@@ -1,7 +1,7 @@
 services:
   # 1. MariaDB Database (Mapped to portfolio-db)
   portfolio-db:
-    image: mariadb:10.11
+    image: mariadb:lts
     environment:
       MARIADB_ROOT_PASSWORD: Sairam@1983
       MARIADB_DATABASE: portfolio
