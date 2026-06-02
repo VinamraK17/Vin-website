@@ -1,5 +1,7 @@
-# Use Node.js LTS as the base image
 FROM node:20-slim AS builder
+
+# Install openssl (required for Prisma client generation)
+RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
