@@ -17,7 +17,8 @@ COPY . .
 RUN npx prisma generate
 
 # Build the application
-RUN npm run build > build.log 2>&1 || (cat build.log && exit 1)
+RUN npm run build > build.log 2>&1; echo "Build attempted"
+RUN cat build.log && false
 
 # --- Production Image ---
 FROM node:20-slim
