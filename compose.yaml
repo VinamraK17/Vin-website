@@ -27,6 +27,21 @@ services:
       - portfolio-network
     restart: always
 
+  # 3. Database Dashboard (phpMyAdmin)
+  db-dashboard:
+    image: phpmyadmin:latest
+    depends_on:
+      - portfolio-db
+    environment:
+      PMA_HOST: portfolio-db
+      PMA_USER: portfolio_user
+      PMA_PASSWORD: Sairam@1983
+    ports:
+      - "8085:80"
+    networks:
+      - portfolio-network
+    restart: always
+
 volumes:
   portfolio-db-data:
 
