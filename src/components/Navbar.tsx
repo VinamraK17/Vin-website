@@ -34,7 +34,10 @@ export default function Navbar({ mode, setMode }: NavbarProps) {
         <div className="flex items-center gap-6">
           <Link 
             to="/" 
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              setIsOpen(false);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             className="font-display font-bold text-xl tracking-tighter text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors"
           >
             VK™

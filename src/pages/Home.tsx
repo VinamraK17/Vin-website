@@ -133,6 +133,20 @@ export default function Home({ projects, isLoadingProjects, handleLinkClick, imp
                 Explore Full Career Timeline & Credentials →
               </Link>
             </div>
+
+            {/* Leadership Philosophy Card */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="p-8 border border-[var(--color-border)] rounded-3xl bg-[var(--color-glass)] backdrop-blur-md relative overflow-hidden mt-8"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--color-accent)]/5 blur-[80px] -mr-32 -mt-32 rounded-full" />
+              <span className="text-[10px] font-mono text-[var(--color-accent)] uppercase tracking-wider mb-4 block font-bold">Leadership Philosophy</span>
+              <p className="text-md text-[var(--color-ink)]/85 leading-relaxed font-light italic pl-4 border-l border-[var(--color-accent)]/30">
+                "Most digital transformations fail — not because of the technology, but because the person leading it has never felt the cost of a system breaking down at 2AM with thousands of people depending on it. I have."
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
