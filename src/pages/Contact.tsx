@@ -96,17 +96,17 @@ export default function Contact({ handleLinkClick }: ContactProps) {
                       document.querySelector('form')?.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className="flex items-center text-left gap-4 group p-3 rounded-2xl transition-all focus:outline-none cursor-pointer hover:bg-[var(--color-ink)]/[0.02]"
+                  className="flex items-center text-left gap-4 group p-3 rounded-2xl transition-all focus:outline-none cursor-pointer hover:bg-[var(--color-ink)]/[0.02] w-full min-w-0"
                 >
-                  <div className="w-12 h-12 rounded-full border border-[var(--color-border)] flex items-center justify-center group-hover:border-[var(--color-accent)] transition-all group-hover:shadow-[0_0_15px_rgba(78,204,163,0.2)]">
+                  <div className="w-12 h-12 rounded-full border border-[var(--color-border)] flex-shrink-0 flex items-center justify-center group-hover:border-[var(--color-accent)] transition-all group-hover:shadow-[0_0_15px_rgba(78,204,163,0.2)]">
                     <Mail className={`w-5 h-5 ${isEmailRevealed ? "text-[var(--color-accent)]" : "text-[var(--color-ink-faint)]"}`} />
                   </div>
-                  <div>
-                    <div className="text-[10px] uppercase tracking-widest text-[var(--color-ink-faint)]">Email (Personal)</div>
-                    <div className={`font-medium transition-all duration-500 font-mono ${isEmailRevealed ? "text-[var(--color-accent)]" : "text-[var(--color-ink)]"}`}>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-[10px] uppercase tracking-widest text-[var(--color-ink-faint)] truncate">Email (Personal)</div>
+                    <div className={`font-medium transition-all duration-500 font-mono text-xs sm:text-sm md:text-base break-all ${isEmailRevealed ? "text-[var(--color-accent)]" : "text-[var(--color-ink)]"}`}>
                       {emailAddress}
                     </div>
-                    <div className="text-[9px] text-[var(--color-accent)] opacity-60 font-mono tracking-tighter">
+                    <div className="text-[9px] text-[var(--color-accent)] opacity-60 font-mono tracking-tighter truncate">
                       {isEmailRevealed ? "Verified & Accessible" : "Verify via Form to Access"}
                     </div>
                   </div>
@@ -117,17 +117,17 @@ export default function Contact({ handleLinkClick }: ContactProps) {
                   target="_blank" 
                   rel="noreferrer"
                   onClick={() => handleLinkClick("LinkedIn", "https://www.linkedin.com/in/vinamrakumar")}
-                  className="flex items-center gap-4 group p-3 rounded-2xl transition-all hover:bg-[var(--color-ink)]/[0.02]"
+                  className="flex items-center gap-4 group p-3 rounded-2xl transition-all hover:bg-[var(--color-ink)]/[0.02] w-full min-w-0"
                 >
-                  <div className="w-12 h-12 rounded-full border border-[var(--color-border)] flex items-center justify-center group-hover:border-[var(--color-accent)] transition-all group-hover:shadow-[0_0_15px_rgba(78,204,163,0.2)]">
+                  <div className="w-12 h-12 rounded-full border border-[var(--color-border)] flex-shrink-0 flex items-center justify-center group-hover:border-[var(--color-accent)] transition-all group-hover:shadow-[0_0_15px_rgba(78,204,163,0.2)]">
                     <Linkedin className="w-5 h-5 text-[var(--color-ink-faint)] group-hover:text-[var(--color-accent)] transition-colors" />
                   </div>
-                  <div>
-                    <div className="text-[10px] uppercase tracking-widest text-[var(--color-ink-faint)]">LinkedIn</div>
-                    <div className="font-medium text-[var(--color-ink)] group-hover:text-[var(--color-accent)] transition-colors">
+                  <div className="min-w-0 flex-1">
+                    <div className="text-[10px] uppercase tracking-widest text-[var(--color-ink-faint)] truncate">LinkedIn</div>
+                    <div className="font-medium text-[var(--color-ink)] group-hover:text-[var(--color-accent)] transition-colors text-xs sm:text-sm md:text-base truncate">
                       vinamrakumar
                     </div>
-                    <div className="text-[9px] text-[var(--color-ink-faint)] opacity-40 font-mono tracking-tighter">
+                    <div className="text-[9px] text-[var(--color-ink-faint)] opacity-40 font-mono tracking-tighter truncate">
                       Connect professionally
                     </div>
                   </div>

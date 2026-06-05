@@ -969,25 +969,25 @@
                 <div class="grid md:grid-cols-2 gap-16 relative z-10">
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-4">
-                            <button id="email-reveal-btn" class="flex items-center text-left gap-4 group p-3 rounded-2xl transition-all focus:outline-none cursor-pointer hover:bg-[var(--color-ink)]/[0.02]">
-                                <div class="w-12 h-12 rounded-full border border-[var(--color-ink)]/10 flex items-center justify-center group-hover:border-[var(--color-accent)]/30 transition-all group-hover:shadow-[0_0_15px_rgba(78,204,163,0.2)]">
+                            <button id="email-reveal-btn" class="flex items-center text-left gap-4 group p-3 rounded-2xl transition-all focus:outline-none cursor-pointer hover:bg-[var(--color-ink)]/[0.02] w-full min-w-0">
+                                <div class="w-12 h-12 rounded-full border border-[var(--color-ink)]/10 flex-shrink-0 flex items-center justify-center group-hover:border-[var(--color-accent)]/30 transition-all group-hover:shadow-[0_0_15px_rgba(78,204,163,0.2)]">
                                     <i data-lucide="mail" id="email-icon" class="w-5 h-5 text-[var(--color-ink)]/40"></i>
                                 </div>
-                                <div>
-                                    <div class="text-[10px] uppercase tracking-widest text-[var(--color-ink)]/30">Email (Personal)</div>
-                                    <div id="email-display" class="font-medium text-[var(--color-ink)] transition-all duration-500 font-mono">•••••••@vinamrakumar.com</div>
-                                    <div id="email-hint" class="text-[9px] text-[var(--color-accent)] opacity-60 font-mono">Verify via Form to Access</div>
+                                <div class="min-w-0 flex-1">
+                                    <div class="text-[10px] uppercase tracking-widest text-[var(--color-ink)]/30 truncate">Email (Personal)</div>
+                                    <div id="email-display" class="font-medium text-[var(--color-ink)] transition-all duration-500 font-mono text-xs sm:text-sm md:text-base break-all">•••••••@vinamrakumar.com</div>
+                                    <div id="email-hint" class="text-[9px] text-[var(--color-accent)] opacity-60 font-mono truncate">Verify via Form to Access</div>
                                 </div>
                             </button>
 
-                            <a href="https://www.linkedin.com/in/vinamrakumar" target="_blank" class="flex items-center gap-4 group p-3 rounded-2xl transition-all hover:bg-[var(--color-ink)]/[0.02]">
-                                <div class="w-12 h-12 rounded-full border border-[var(--color-ink)]/10 flex items-center justify-center group-hover:border-[var(--color-accent)]/30 transition-all group-hover:shadow-[0_0_15px_rgba(78,204,163,0.2)]">
+                            <a href="https://www.linkedin.com/in/vinamrakumar" target="_blank" class="flex items-center gap-4 group p-3 rounded-2xl transition-all hover:bg-[var(--color-ink)]/[0.02] w-full min-w-0">
+                                <div class="w-12 h-12 rounded-full border border-[var(--color-ink)]/10 flex-shrink-0 flex items-center justify-center group-hover:border-[var(--color-accent)]/30 transition-all group-hover:shadow-[0_0_15px_rgba(78,204,163,0.2)]">
                                     <i data-lucide="linkedin" class="w-5 h-5 text-[var(--color-ink-faint)] group-hover:text-[var(--color-accent)] transition-colors"></i>
                                 </div>
-                                <div>
-                                    <div class="text-[10px] uppercase tracking-widest text-[var(--color-ink-faint)]">LinkedIn</div>
-                                    <div class="font-medium text-[var(--color-ink)] group-hover:text-[var(--color-accent)] transition-colors">vinamrakumar</div>
-                                    <div class="text-[9px] text-[var(--color-ink-faint)] opacity-40 font-mono tracking-tighter">Connect professionally</div>
+                                <div class="min-w-0 flex-1">
+                                    <div class="text-[10px] uppercase tracking-widest text-[var(--color-ink-faint)] truncate">LinkedIn</div>
+                                    <div class="font-medium text-[var(--color-ink)] group-hover:text-[var(--color-accent)] transition-colors text-xs sm:text-sm md:text-base truncate">vinamrakumar</div>
+                                    <div class="text-[9px] text-[var(--color-ink-faint)] opacity-40 font-mono tracking-tighter truncate">Connect professionally</div>
                                 </div>
                             </a>
 
