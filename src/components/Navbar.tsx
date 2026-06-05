@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Sun, Moon, Menu, X } from "lucide-react";
 
 interface NavbarProps {
@@ -10,6 +10,17 @@ interface NavbarProps {
 export default function Navbar({ mode, setMode }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const NAV_LINKS = [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
@@ -18,7 +29,7 @@ export default function Navbar({ mode, setMode }: NavbarProps) {
   ];
 
   return (
-    <nav className="glass-nav px-6 py-4 relative z-50">
+    <nav className="glass-nav px-6 py-4">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-6">
           <Link 
@@ -83,6 +94,7 @@ export default function Navbar({ mode, setMode }: NavbarProps) {
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 rounded-full border border-[var(--color-border)] hover:bg-[var(--color-ink)]/[0.05] transition-all text-[var(--color-ink)] focus:outline-none cursor-pointer flex items-center justify-center"
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>

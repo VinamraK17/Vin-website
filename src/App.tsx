@@ -210,7 +210,7 @@ function MainLayout() {
   };
 
   return (
-    <div className="min-h-screen selection:bg-[var(--color-accent)] selection:text-white">
+    <div className="min-h-screen selection:bg-[var(--color-accent)] selection:text-white pt-[76px]">
       <Navbar mode={mode} setMode={setMode} />
       <ScrollToTop />
       

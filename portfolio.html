@@ -107,6 +107,7 @@
             color: var(--color-ink);
             -webkit-font-smoothing: antialiased;
             transition: background 0.3s, color 0.3s;
+            padding-top: 76px;
         }
         
         .glass {
@@ -117,8 +118,11 @@
         }
 
         .glass-nav {
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
             z-index: 50;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -205,7 +209,7 @@
 <body class="font-sans">
 
     <!-- Navigation -->
-    <nav class="glass-nav px-6 py-4 relative z-50">
+    <nav class="glass-nav px-6 py-4">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-6">
                 <a href="#" class="font-display font-bold text-xl tracking-tighter text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors">VK™</a>
@@ -229,7 +233,7 @@
                 <a href="#contact" class="hidden md:inline-block px-5 py-2 bg-[var(--color-ink)] text-[var(--color-surface)] rounded-full text-[11px] font-bold uppercase tracking-wider hover:bg-[var(--color-ink)]/90 transition-all font-mono">Get in touch</a>
                 
                 <!-- Hamburger Button (Mobile Only) -->
-                <button onclick="toggleMenu()" class="md:hidden p-2 rounded-full border border-[var(--color-border)] hover:bg-[var(--color-ink)]/5 transition-all text-[var(--color-ink)] focus:outline-none cursor-pointer flex items-center justify-center">
+                <button id="hamburger-btn" onclick="toggleMenu()" class="md:hidden p-2 rounded-full border border-[var(--color-border)] hover:bg-[var(--color-ink)]/5 transition-all text-[var(--color-ink)] focus:outline-none cursor-pointer flex items-center justify-center" aria-label="Toggle menu" aria-expanded="false">
                     <i data-lucide="menu" id="hamburger-icon" class="w-4 h-4"></i>
                 </button>
             </div>
@@ -1396,15 +1400,20 @@
         window.toggleMenu = () => {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('hamburger-icon');
+            const btn = document.getElementById('hamburger-btn');
             if (menu) {
                 if (menu.classList.contains('hidden')) {
                     menu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                    if (btn) btn.setAttribute('aria-expanded', 'true');
                     if (icon) {
                         icon.setAttribute('data-lucide', 'x');
                         if (window.lucide) lucide.createIcons();
                     }
                 } else {
                     menu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                    if (btn) btn.setAttribute('aria-expanded', 'false');
                     if (icon) {
                         icon.setAttribute('data-lucide', 'menu');
                         if (window.lucide) lucide.createIcons();
