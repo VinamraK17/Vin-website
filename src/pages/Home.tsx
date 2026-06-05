@@ -43,19 +43,16 @@ export default function Home({ projects, isLoadingProjects, handleLinkClick, imp
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="section-label">Digital Transformation Leader</span>
+            <span className="section-label">From Controlling Airspace to Controlling Roadmaps</span>
             <h1 className="text-7xl md:text-9xl font-bold mb-8 leading-[0.85] tracking-tighter uppercase p-2">
               Vinamra <br/>
               Kumar
             </h1>
             <p className="max-w-2xl text-xl text-[var(--color-ink-faint)] font-light leading-relaxed mb-8">
-              MIT-certified Product Leader with 20+ years of experience leading complex, high-impact digital 
-              products and AI strategies. Specialized in bridging business strategy with technical execution 
-              to unlock multi-million dollar value in telecom and aviation sectors.
+              MIT-certified Product Leader with 20+ years of experience bridging business strategy with technical execution to unlock multi-million dollar value. Built NEXUS, an AI troubleshooting platform serving 5M+ customers at Sunrise GmbH, following a distinguished tenure at Lufthansa Systems and early career foundations in Air Traffic Control.
             </p>
             <p className="max-w-2xl text-sm text-[var(--color-ink-faint)]/60 font-light leading-relaxed mb-12 italic">
-              Currently driving digital evolution at Sunrise GmbH, following a distinguished tenure at 
-              Lufthansa Systems and early career foundations as an Air Traffic Controller in India.
+              Targeting VP / Head of Digital Product & Transformation roles in Europe. Globally experienced, Swiss-based, and fluent in both engineering depth and boardroom strategy.
             </p>
             
             <div className="flex flex-wrap gap-4 items-center">
