@@ -293,7 +293,7 @@ function MainLayout() {
 
       <footer className="max-w-6xl mx-auto px-6 py-12 border-t border-[var(--color-border)] flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex flex-col gap-2">
-          <div className="text-[11px] font-mono tracking-widest text-[var(--color-ink)] opacity-40 uppercase">© {new Date().getFullYear()} VINAMRA KUMAR™. ALL RIGHTS RESERVED.</div>
+          <div className="text-[11px] font-mono tracking-widest text-[var(--color-ink)] opacity-40 uppercase">© {new Date().getFullYear()} VINAMRA KUMAR. ALL RIGHTS RESERVED.</div>
           {dbStatus && (
             <div className="flex items-center gap-2 group cursor-help" title={`Storage: ${dbStatus.persistence || "Local"}`}>
               <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${dbStatus.status === 'active' ? 'bg-[#4ECC9F]' : 'bg-red-500'}`} />

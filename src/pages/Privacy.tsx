@@ -21,7 +21,7 @@ export default function Privacy() {
             <span className="text-[var(--color-ink)]/30 italic font-light">Terms of Use</span>
           </h1>
           <p className="text-lg text-[var(--color-ink-faint)] font-light leading-relaxed max-w-2xl">
-            This policy outlines how data is handled on this site, GDPR compliance details, and the intellectual property protection (trademarks and copyright) governing the contents.
+            This policy outlines how data is handled on this site, GDPR compliance details, and the intellectual property protection (copyright and design) governing the contents.
           </p>
         </div>
 
@@ -83,10 +83,7 @@ export default function Privacy() {
               3. Intellectual Property & Copy Protection
             </h2>
             <p className="pl-8">
-              All content on this website, including but not limited to text, graphics, project case studies, visual design, and source code, is the exclusive intellectual property of <strong>Vinamra Kumar™</strong> and is protected under global copyright and trademark laws.
-            </p>
-            <p className="pl-8">
-              <strong>Trademark Notice:</strong> "Vinamra Kumar", "NEXUS AI Troubleshooting Engine", and associated custom design systems, logos, and layouts are proprietary trademarks.
+              All content on this website, including but not limited to text, graphics, project case studies, visual design, and source code, is the exclusive intellectual property of <strong>Vinamra Kumar</strong> and is protected under global copyright and intellectual property laws.
             </p>
             <p className="pl-8 text-sm italic border-l-2 border-[var(--color-border)] pl-4">
               Permission is NOT granted to copy, reproduce, modify, distribute, or scrape any content or layout from this website for commercial or portfolio replication purposes. Unauthorized duplication is strictly prohibited.
@@ -100,7 +97,7 @@ export default function Privacy() {
               4. Contact for Legal Inquiries
             </h2>
             <p className="pl-8">
-              For any questions regarding data privacy, rights requests, or trademark permissions, please contact:
+              For any questions regarding data privacy, rights requests, or intellectual property permissions, please contact:
             </p>
             <p className="pl-8 font-mono text-sm text-[var(--color-accent)] font-semibold">
               contact@vinamrakumar.com
