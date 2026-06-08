@@ -1,7 +1,5 @@
 import express from "express";
 import path from "path";
-import { createServer as createViteServer } from "vite";
-import fs from "fs";
 import dotenv from "dotenv";
 import { PrismaClient } from "@prisma/client";
 import { google } from "googleapis";
@@ -17,10 +15,23 @@ const prisma = new PrismaClient({
       url: dbUrl,
     },
   },
-} as any);
+});
+
+// Escape HTML special characters to prevent injection in email bodies
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
 // Gmail & SMTP Helper (Robust / NAS Compatible)
 async function sendEmail(name: string, email: string, message: string) {
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeMessage = escapeHtml(message);
   const targetEmail = "contact@vinamrakumar.com";
   const subject = `Portfolio Contact from ${name}`;
 
@@ -38,15 +49,15 @@ async function sendEmail(name: string, email: string, message: string) {
       });
 
       await transporter.sendMail({
-        from: `"${name}" <${process.env.SMTP_USER}>`,
+        from: `"${safeName}" <${process.env.SMTP_USER}>`,
         to: targetEmail,
         replyTo: email,
         subject: subject,
         html: `
           <h3>New contact request</h3>
-          <p><strong>From:</strong> ${name} (${email})</p>
+          <p><strong>From:</strong> ${safeName} (${safeEmail})</p>
           <p><strong>Message:</strong></p>
-          <p style="white-space: pre-wrap;">${message}</p>
+          <p style="white-space: pre-wrap;">${safeMessage}</p>
           <br/><hr/>
           <p><small>Sent via Nodemailer (Self-Hosted MariaDB/NAS)</small></p>
         `,
@@ -75,9 +86,9 @@ async function sendEmail(name: string, email: string, message: string) {
       `Subject: ${utf8Subject}`,
       "",
       `<h3>New contact request</h3>`,
-      `<p><strong>From:</strong> ${name} (${email})</p>`,
+      `<p><strong>From:</strong> ${safeName} (${safeEmail})</p>`,
       `<p><strong>Message:</strong></p>`,
-      `<p style="white-space: pre-wrap;">${message}</p>`,
+      `<p style="white-space: pre-wrap;">${safeMessage}</p>`,
       "<br/>",
       "<hr/>",
       "<p><small>Sent via Google Workspace Integration (Prisma/MariaDB Port)</small></p>"
@@ -134,10 +145,9 @@ async function seedData() {
   }
 
   const expCount = await prisma.experience.count();
-  if (expCount < 7) {
+  if (expCount === 0) {
     console.log("Seeding full experience history...");
-    await prisma.experience.deleteMany({}); // Clear existing to prevent duplicates/conflicts
-    
+
     await prisma.experience.create({
       data: {
         company: "Sunrise GmbH",
@@ -257,6 +267,9 @@ async function startServer() {
 
   app.use(express.json());
 
+  // Serve static assets (images, robots.txt, sitemap, etc.) from /public
+  app.use(express.static(path.join(process.cwd(), 'public')));
+
   // Try to seed data (ignore if fails during build/env issues)
   seedData().catch(err => console.warn("Seed failed (ignorable if DB not ready):", err.message));
 
@@ -301,16 +314,14 @@ async function startServer() {
 
   // Reveal Phone Endpoint
   app.get("/api/reveal-phone", (req, res) => {
-    const phone = process.env.CONTACT_PHONE || "+41 76 326 31 55";
+    const phone = process.env.CONTACT_PHONE;
+    if (!phone) return res.status(404).json({ error: "Phone not configured." });
     res.json({ phone });
   });
 
   // Projects Endpoint
   app.get("/api/projects", async (req, res) => {
     try {
-      // Simulate network jitter/latency for perceived performance test
-      if (process.env.SIMULATE_LATENCY) await new Promise(r => setTimeout(r, 1200));
-      
       const projects = await prisma.project.findMany({
         orderBy: { order: "asc" }
       });
@@ -324,8 +335,6 @@ async function startServer() {
   // Experiences Endpoint
   app.get("/api/experiences", async (req, res) => {
     try {
-      if (process.env.SIMULATE_LATENCY) await new Promise(r => setTimeout(r, 1800));
-
       const experiences = await prisma.experience.findMany({
         orderBy: { order: "asc" }
       });
@@ -375,24 +384,11 @@ async function startServer() {
     }
   });
 
-  // Serve portfolio.html for standalone requests
-  app.get("/portfolio.html", (req, res) => {
-    res.sendFile(path.join(process.cwd(), "portfolio.html"));
+  // Serve portfolio.html as the main page for all non-API routes
+  const portfolioPath = path.join(process.cwd(), "portfolio.html");
+  app.get("*", (req, res) => {
+    res.sendFile(portfolioPath);
   });
-
-  if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
-    });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
-    });
-  }
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on http://localhost:${PORT}`);

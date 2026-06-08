@@ -204,6 +204,58 @@
             -moz-user-select: text !important;
             -ms-user-select: text !important;
         }
+
+        /* ── Scroll-reveal animations ────────────────────────────────── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-up.d1 { transition-delay: 0.08s; }
+        .fade-up.d2 { transition-delay: 0.16s; }
+        .fade-up.d3 { transition-delay: 0.24s; }
+        .fade-up.d4 { transition-delay: 0.32s; }
+        .fade-up.d5 { transition-delay: 0.40s; }
+
+        /* ── Availability badge ──────────────────────────────────────── */
+        .available-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            border: 1px solid var(--color-accent);
+            background: rgba(78, 204, 163, 0.08);
+            font-size: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-accent);
+        }
+        .available-dot {
+            width: 6px;
+            height: 6px;
+            min-width: 6px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(78,204,163,0.4); }
+            50% { opacity: 0.7; transform: scale(1.4); box-shadow: 0 0 0 4px rgba(78,204,163,0); }
+        }
+
+        /* ── Services CTA banner ─────────────────────────────────────── */
+        .cta-banner {
+            background: linear-gradient(135deg, rgba(78,204,163,0.07) 0%, rgba(78,204,163,0.02) 100%);
+            border: 1px solid rgba(78,204,163,0.18);
+        }
     </style>
 </head>
 <body class="font-sans">
@@ -225,6 +277,7 @@
             <div class="flex items-center gap-4">
                 <div class="hidden md:flex items-center gap-6">
                     <a href="#" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Home</a>
+                    <a href="#services" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Services</a>
                     <a href="#projects" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Projects</a>
                     <a href="#experience" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Experience</a>
                     <a href="#expertise" class="text-[11px] uppercase tracking-widest text-[var(--color-ink)]/50 hover:text-[var(--color-ink)] transition-colors">Expertise</a>
@@ -243,6 +296,7 @@
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[var(--color-surface)]/95 backdrop-blur-xl border-b border-[var(--color-border)] md:hidden z-40 p-8 flex flex-col gap-6 shadow-2xl">
             <div class="flex flex-col gap-2">
                 <a href="#" onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-widest text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-all py-3 border-b border-[var(--color-border)]/10 block">Home</a>
+                <a href="#services" onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-widest text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-all py-3 border-b border-[var(--color-border)]/10 block">Services</a>
                 <a href="#projects" onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-widest text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-all py-3 border-b border-[var(--color-border)]/10 block">Projects</a>
                 <a href="#experience" onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-widest text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-all py-3 border-b border-[var(--color-border)]/10 block">Experience</a>
                 <a href="#expertise" onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-widest text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-all py-3 border-b border-[var(--color-border)]/10 block">Expertise</a>
@@ -257,6 +311,12 @@
         <section class="max-w-6xl mx-auto pt-24 pb-32">
             <div class="grid lg:grid-cols-[1fr_400px] gap-20 items-center">
                 <div>
+                    <div class="mb-6">
+                        <span class="available-badge">
+                            <span class="available-dot"></span>
+                            Available for engagements
+                        </span>
+                    </div>
                     <span class="section-label mb-8 block">From Controlling Airspace to Controlling Roadmaps</span>
                     <h1 class="text-7xl md:text-9xl font-bold mb-8 leading-[0.85] tracking-tighter uppercase display-gradient">
                         Vinamra <br> Kumar
@@ -265,7 +325,7 @@
                         MIT-certified Product Leader with 20+ years of experience bridging business strategy with technical execution to unlock multi-million dollar value. Built NEXUS, an AI troubleshooting platform serving millions of customers at Sunrise GmbH, following a distinguished tenure at Lufthansa Systems and early career foundations in Air Traffic Control.
                     </p>
                     <p class="max-w-xl text-sm text-[var(--color-ink)]/30 font-light leading-relaxed mb-12 italic border-l-2 border-[var(--color-accent)]/20 pl-6">
-                        Targeting VP / Head of Digital Product & Transformation roles in Europe. Globally experienced, Swiss-based, and fluent in both engineering depth and boardroom strategy.
+                        Available for advisory engagements, fractional leadership, coaching, and speaking. Open to VP / Head of Digital Product &amp; Transformation roles in Europe. Swiss-based. Globally experienced.
                     </p>
                     
                     <div class="flex flex-wrap gap-4 items-center">
@@ -285,7 +345,7 @@
                     <div class="absolute inset-4 rounded-full border border-[var(--color-ink)]/10"></div>
                     <div class="absolute inset-0 flex items-center justify-center">
                         <div class="w-[85%] h-[85%] rounded-full glass overflow-hidden border-2 border-[var(--color-ink)]/20">
-                           <img src="hero_hq.jpg" alt="Vinamra Kumar" class="w-full h-full object-cover object-top" loading="eager">
+                           <img src="/hero_hq.jpg" alt="Vinamra Kumar" class="w-full h-full object-cover object-top" loading="eager">
                         </div>
                     </div>
                     <div class="absolute top-10 right-0 w-16 h-16 glass rounded-2xl flex items-center justify-center border border-[var(--color-ink)]/20">
@@ -296,7 +356,7 @@
         </section>
 
         <!-- About Deep Dive -->
-        <section id="about" class="max-w-6xl mx-auto pb-32">
+        <section id="about" class="max-w-6xl mx-auto pb-32 fade-up">
             <div class="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
                 <div>
                     <span class="section-label">Professional Bio</span>
@@ -331,10 +391,12 @@
         </section>
 
         <!-- Stats -->
-        <section class="max-w-6xl mx-auto pb-32">
+        <section class="max-w-6xl mx-auto pb-32" id="stats-section">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="border-l border-[var(--color-ink)]/10 pl-6">
-                    <div class="text-3xl md:text-5xl font-display font-medium mb-1 tracking-tighter">CHF 10M</div>
+                <div class="border-l border-[var(--color-ink)]/10 pl-6 fade-up d1">
+                    <div class="text-3xl md:text-5xl font-display font-medium mb-1 tracking-tighter">
+                        CHF <span class="stat-number" data-target="10" data-suffix="M">10M</span>
+                    </div>
                     <div class="text-[10px] uppercase tracking-widest text-[var(--color-accent)] mb-1">Financial Impact</div>
                     <div class="text-[11px] text-[var(--color-ink)]/40 leading-tight">
                         <div class="flex flex-col gap-1">
@@ -343,26 +405,160 @@
                         </div>
                     </div>
                 </div>
-                <div class="border-l border-[var(--color-ink)]/10 pl-6">
-                    <div class="text-3xl md:text-5xl font-display font-medium mb-1 tracking-tighter">20%+</div>
+                <div class="border-l border-[var(--color-ink)]/10 pl-6 fade-up d2">
+                    <div class="text-3xl md:text-5xl font-display font-medium mb-1 tracking-tighter">
+                        <span class="stat-number" data-target="20" data-suffix="%+">20%+</span>
+                    </div>
                     <div class="text-[10px] uppercase tracking-widest text-[var(--color-accent)] mb-1">Cost Reduction</div>
-                    <div class="text-[11px] text-[var(--color-ink)]/20 italic">CAPEX & OPEX</div>
+                    <div class="text-[11px] text-[var(--color-ink)]/20 italic">CAPEX &amp; OPEX</div>
                 </div>
-                <div class="border-l border-[var(--color-ink)]/10 pl-6">
-                    <div class="text-3xl md:text-5xl font-display font-medium mb-1 tracking-tighter">20+ Yrs</div>
+                <div class="border-l border-[var(--color-ink)]/10 pl-6 fade-up d3">
+                    <div class="text-3xl md:text-5xl font-display font-medium mb-1 tracking-tighter">
+                        <span class="stat-number" data-target="20" data-suffix="+ Yrs">20+ Yrs</span>
+                    </div>
                     <div class="text-[10px] uppercase tracking-widest text-[var(--color-accent)] mb-1">Leadership</div>
                     <div class="text-[11px] text-[var(--color-ink)]/20 italic">Industry Experience</div>
                 </div>
-                <div class="border-l border-[var(--color-ink)]/10 pl-6">
-                    <div class="text-3xl md:text-5xl font-display font-medium mb-1 tracking-tighter">5M+</div>
+                <div class="border-l border-[var(--color-ink)]/10 pl-6 fade-up d4">
+                    <div class="text-3xl md:text-5xl font-display font-medium mb-1 tracking-tighter">
+                        <span class="stat-number" data-target="5" data-suffix="M+">5M+</span>
+                    </div>
                     <div class="text-[10px] uppercase tracking-widest text-[var(--color-accent)] mb-1">Users</div>
                     <div class="text-[11px] text-[var(--color-ink)]/20 italic">Impacted daily</div>
                 </div>
             </div>
         </section>
 
+        <!-- Services Section -->
+        <section id="services" class="max-w-6xl mx-auto pb-32 fade-up">
+            <div class="text-center mb-16">
+                <span class="section-label inline-block">Professional Services</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-ink)] tracking-tight leading-tight mt-3 uppercase">
+                    How We Work <span class="text-[var(--color-ink)]/30 italic font-light">Together.</span>
+                </h2>
+                <p class="text-[var(--color-ink)]/50 mt-4 max-w-2xl mx-auto text-sm">
+                    Twenty years of operational discipline, AI delivery at scale, and product leadership — available as a service. No theory. No frameworks for frameworks' sake. Just outcomes.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- GenAI Transformation Advisory -->
+                <div class="glass p-8 rounded-[32px] border border-[var(--color-ink)]/5 hover:border-[var(--color-accent)]/20 hover:bg-[var(--color-ink)]/[0.03] transition-all flex flex-col">
+                    <div class="w-12 h-12 rounded-2xl bg-[var(--color-accent)]/10 flex items-center justify-center mb-6">
+                        <i data-lucide="cpu" class="w-6 h-6 text-[var(--color-accent)]"></i>
+                    </div>
+                    <span class="text-[9px] font-mono text-[var(--color-accent)] uppercase tracking-widest font-bold mb-3">4–8 Week Engagement</span>
+                    <h3 class="text-xl font-bold mb-3 text-[var(--color-ink)]">GenAI Transformation Advisory</h3>
+                    <p class="text-sm text-[var(--color-ink)]/50 leading-relaxed mb-4 flex-1">
+                        Move from AI experimentation to production deployment. I help regulated-industry organisations define use cases, select the right stack, build governance frameworks, and ship LLM products that actually work — not demos.
+                    </p>
+                    <div class="border-t border-[var(--color-border)] pt-4 mt-2">
+                        <p class="text-[10px] font-mono text-[var(--color-ink)]/30 uppercase tracking-wider mb-1">Best for</p>
+                        <p class="text-xs text-[var(--color-ink)]/50">Finance, telecom, aviation &amp; healthcare teams entering AI transformation</p>
+                    </div>
+                    <a href="#contact" class="mt-6 flex items-center gap-2 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest hover:underline">
+                        Enquire <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                    </a>
+                </div>
+
+                <!-- Fractional Head of Product -->
+                <div class="glass p-8 rounded-[32px] border border-[var(--color-ink)]/5 hover:border-[var(--color-accent)]/20 hover:bg-[var(--color-ink)]/[0.03] transition-all flex flex-col">
+                    <div class="w-12 h-12 rounded-2xl bg-[var(--color-accent)]/10 flex items-center justify-center mb-6">
+                        <i data-lucide="layers" class="w-6 h-6 text-[var(--color-accent)]"></i>
+                    </div>
+                    <span class="text-[9px] font-mono text-[var(--color-accent)] uppercase tracking-widest font-bold mb-3">2 Days/Week · 3–12 Months</span>
+                    <h3 class="text-xl font-bold mb-3 text-[var(--color-ink)]">Fractional Head of Product</h3>
+                    <p class="text-sm text-[var(--color-ink)]/50 leading-relaxed mb-4 flex-1">
+                        Senior product leadership without the full-time cost. I embed with your team to own or shape product strategy, build roadmap discipline, define team structure, and accelerate delivery — then hand it off cleanly.
+                    </p>
+                    <div class="border-t border-[var(--color-border)] pt-4 mt-2">
+                        <p class="text-[10px] font-mono text-[var(--color-ink)]/30 uppercase tracking-wider mb-1">Best for</p>
+                        <p class="text-xs text-[var(--color-ink)]/50">Scale-ups and mid-market companies bridging to a full-time product hire</p>
+                    </div>
+                    <a href="#contact" class="mt-6 flex items-center gap-2 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest hover:underline">
+                        Enquire <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                    </a>
+                </div>
+
+                <!-- Product Leadership Coaching -->
+                <div class="glass p-8 rounded-[32px] border border-[var(--color-ink)]/5 hover:border-[var(--color-accent)]/20 hover:bg-[var(--color-ink)]/[0.03] transition-all flex flex-col">
+                    <div class="w-12 h-12 rounded-2xl bg-[var(--color-accent)]/10 flex items-center justify-center mb-6">
+                        <i data-lucide="trending-up" class="w-6 h-6 text-[var(--color-accent)]"></i>
+                    </div>
+                    <span class="text-[9px] font-mono text-[var(--color-accent)] uppercase tracking-widest font-bold mb-3">Monthly Retainer · Bi-Weekly 1:1</span>
+                    <h3 class="text-xl font-bold mb-3 text-[var(--color-ink)]">Product Leadership Coaching</h3>
+                    <p class="text-sm text-[var(--color-ink)]/50 leading-relaxed mb-4 flex-1">
+                        For senior product managers targeting the Director or VP transition. We work on positioning, stakeholder influence, strategic communication, and the mindset shift from delivery to leadership. Real work as the material — no generic playbooks.
+                    </p>
+                    <div class="border-t border-[var(--color-border)] pt-4 mt-2">
+                        <p class="text-[10px] font-mono text-[var(--color-ink)]/30 uppercase tracking-wider mb-1">Best for</p>
+                        <p class="text-xs text-[var(--color-ink)]/50">Senior PMs and product leads 1–3 years from a VP-level role</p>
+                    </div>
+                    <a href="#contact" class="mt-6 flex items-center gap-2 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest hover:underline">
+                        Enquire <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                    </a>
+                </div>
+
+                <!-- Speaking & Workshops -->
+                <div class="glass p-8 rounded-[32px] border border-[var(--color-ink)]/5 hover:border-[var(--color-accent)]/20 hover:bg-[var(--color-ink)]/[0.03] transition-all flex flex-col">
+                    <div class="w-12 h-12 rounded-2xl bg-[var(--color-accent)]/10 flex items-center justify-center mb-6">
+                        <i data-lucide="mic" class="w-6 h-6 text-[var(--color-accent)]"></i>
+                    </div>
+                    <span class="text-[9px] font-mono text-[var(--color-accent)] uppercase tracking-widest font-bold mb-3">Keynote · Half-Day Workshop</span>
+                    <h3 class="text-xl font-bold mb-3 text-[var(--color-ink)]">Speaking &amp; Workshops</h3>
+                    <p class="text-sm text-[var(--color-ink)]/50 leading-relaxed mb-4 flex-1">
+                        Keynotes on AI transformation, digital leadership, and what operational excellence from high-stakes environments teaches us about building technology products. Available for innovation summits, corporate events, and conferences across Europe.
+                    </p>
+                    <div class="border-t border-[var(--color-border)] pt-4 mt-2">
+                        <p class="text-[10px] font-mono text-[var(--color-ink)]/30 uppercase tracking-wider mb-1">Signature talk</p>
+                        <p class="text-xs text-[var(--color-ink)]/50 italic">"From Controlling Airspace to Controlling Roadmaps"</p>
+                    </div>
+                    <a href="#contact" class="mt-6 flex items-center gap-2 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest hover:underline">
+                        Book a Talk <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                    </a>
+                </div>
+
+                <!-- Mentoring -->
+                <div class="glass p-8 rounded-[32px] border border-[var(--color-ink)]/5 hover:border-[var(--color-accent)]/20 hover:bg-[var(--color-ink)]/[0.03] transition-all flex flex-col md:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 rounded-2xl bg-[var(--color-accent)]/10 flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="w-6 h-6 text-[var(--color-accent)]"></i>
+                    </div>
+                    <span class="text-[9px] font-mono text-[var(--color-accent)] uppercase tracking-widest font-bold mb-3">Flexible · Monthly Sessions</span>
+                    <h3 class="text-xl font-bold mb-3 text-[var(--color-ink)]">Career Mentoring</h3>
+                    <p class="text-sm text-[var(--color-ink)]/50 leading-relaxed mb-4 flex-1">
+                        For professionals navigating significant career transitions — particularly those crossing from technical or operational roles into product and transformation leadership. Structured around your actual situation, not a generic playbook.
+                    </p>
+                    <div class="border-t border-[var(--color-border)] pt-4 mt-2">
+                        <p class="text-[10px] font-mono text-[var(--color-ink)]/30 uppercase tracking-wider mb-1">Best for</p>
+                        <p class="text-xs text-[var(--color-ink)]/50">Engineers, specialists, and ATC professionals making the move into product &amp; leadership</p>
+                    </div>
+                    <a href="#contact" class="mt-6 flex items-center gap-2 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest hover:underline">
+                        Get in Touch <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Services CTA Banner -->
+        <section class="max-w-6xl mx-auto pb-32 fade-up">
+            <div class="cta-banner rounded-[32px] p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="max-w-2xl">
+                    <p class="text-[10px] font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3">Why it matters</p>
+                    <p class="text-2xl md:text-3xl font-bold text-[var(--color-ink)] tracking-tight leading-snug">
+                        Most AI transformations fail — not because of the technology, but because nobody with real delivery experience is in the room.
+                    </p>
+                </div>
+                <a href="#contact" class="shrink-0 flex items-center gap-3 px-8 py-4 bg-[var(--color-accent)] text-[var(--color-surface)] rounded-2xl text-[11px] font-bold uppercase tracking-wider hover:opacity-90 transition-all font-mono">
+                    Work With Me
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </section>
+
         <!-- Trusted By & Endorsements Section -->
-        <section id="credibility" class="max-w-6xl mx-auto pb-32">
+        <section id="credibility" class="max-w-6xl mx-auto pb-32 fade-up">
             <div class="text-center mb-16">
                 <span class="section-label inline-block">Strategic Trust & Career Credentials</span>
                 <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-ink)] tracking-tight leading-tight mt-3 uppercase">
@@ -483,281 +679,24 @@
                 <button onclick="filterProjects('Digital Transformation')" class="filter-btn px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-widest transition-all border bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]">Digital Transformation</button>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1: NEXUS -->
-                <div data-category="Telecom AI" class="project-card group relative h-[450px] overflow-hidden rounded-[32px] glass border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="NEXUS" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-20" referrerpolicy="no-referrer">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                    <div class="absolute inset-0 p-8 flex flex-col justify-end">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-[9px] font-mono border border-[var(--color-ink)]/20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-widest text-[var(--color-accent)] font-bold">Telecom AI</span>
-                            <span class="text-[9px] font-mono bg-[var(--color-ink)] text-[var(--color-surface)] px-3 py-1 rounded-full uppercase tracking-widest font-bold">5M+ Users</span>
-                        </div>
-                        <h3 class="text-2xl font-display font-medium mb-4">NEXUS AI Platform</h3>
-                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                            Spearheaded the first AI-driven troubleshooting engine for technical support at Sunrise GmbH, significantly reducing support volume.
-                        </p>
-                        <button onclick="openCaseStudy(0)" class="inline-flex items-center gap-1 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:underline">
-                            View Case Study →
-                        </button>
-                    </div>
-                </div>
-                <!-- Project 2: GenAI -->
-                <div data-category="Digital Transformation" class="project-card group relative h-[450px] overflow-hidden rounded-[32px] glass border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all">
-                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="GenAI" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-20" referrerpolicy="no-referrer">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                    <div class="absolute inset-0 p-8 flex flex-col justify-end">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-[9px] font-mono border border-[var(--color-ink)]/20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-widest text-[var(--color-accent)] font-bold">Digital Transformation</span>
-                            <span class="text-[9px] font-mono bg-[var(--color-ink)] text-[var(--color-surface)] px-3 py-1 rounded-full uppercase tracking-widest font-bold">8M+ CHF Saved</span>
-                        </div>
-                        <h3 class="text-2xl font-display font-medium mb-4">GenAI Strategy</h3>
-                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                            Orchestrating the roadmap for large language models to automate customer journeys and boost efficiency in digital transformation.
-                        </p>
-                        <button onclick="openCaseStudy(1)" class="inline-flex items-center gap-1 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:underline">
-                            View Case Study →
-                        </button>
-                    </div>
-                </div>
-                <!-- Project 3: Lido -->
-                <div data-category="Aviation Software" class="project-card group relative h-[450px] overflow-hidden rounded-[32px] glass border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all">
-                    <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&fit=crop&q=80&w=800" alt="Aviation" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-20" referrerpolicy="no-referrer">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                    <div class="absolute inset-0 p-8 flex flex-col justify-end">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-[9px] font-mono border border-[var(--color-ink)]/20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-widest text-[var(--color-accent)] font-bold">Aviation Software</span>
-                            <span class="text-[9px] font-mono bg-[var(--color-ink)] text-[var(--color-surface)] px-3 py-1 rounded-full uppercase tracking-widest font-bold">60% Gain</span>
-                        </div>
-                        <h3 class="text-2xl font-display font-medium mb-4">Lido DMS Evolution</h3>
-                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                            Led the transformation of legacy flight navigation data management systems into high-efficiency microservices for Lufthansa Systems.
-                        </p>
-                        <button onclick="openCaseStudy(2)" class="inline-flex items-center gap-1 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:underline">
-                            View Case Study →
-                        </button>
-                    </div>
-                </div>
+            <!-- Project cards rendered dynamically from /api/projects -->
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skeleton loaders shown while fetching -->
+                <div class="project-skeleton h-[450px] rounded-[32px] glass border border-[var(--color-ink)]/5 animate-pulse"></div>
+                <div class="project-skeleton h-[450px] rounded-[32px] glass border border-[var(--color-ink)]/5 animate-pulse"></div>
+                <div class="project-skeleton h-[450px] rounded-[32px] glass border border-[var(--color-ink)]/5 animate-pulse"></div>
             </div>
         </section>
 
         <!-- Experience Section -->
         <section id="experience" class="max-w-6xl mx-auto pb-32">
             <span class="section-label mb-16 block text-center">Selected Career Path</span>
-            <div class="space-y-6">
-                <!-- Sunrise Present -->
-                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
-                    <div class="mb-6 md:mb-0">
-                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">Feb 2024 – Present</span>
-                        <div class="flex items-center gap-2 text-[var(--color-ink)]/40 text-sm">
-                            <i data-lucide="map-pin" class="w-3 h-3"></i>
-                            <span>Zurich, Switzerland</span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-display font-semibold mb-1 group-hover:text-[var(--color-accent)] transition-colors">Manager Digital Transformation</h3>
-                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">Sunrise GmbH</p>
-                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl mb-8">
-                            Owning the digital product strategy for a CHF 1B+ telco, aligning 5+ cross-functional teams around a unified transformation roadmap that accelerated time-to-market across the entire portfolio.
-                        </p>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Digital Leadership: Embedded OKR and KPI frameworks linking product delivery directly to business revenue targets.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Strategic Alignment: Governed external partners/vendors to ensure delivery quality and cost discipline.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Market Competitive: Led market analysis enabling the business to act on opportunities ahead of competitors.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Financial Performance: Secured 8M+ CHF in annual savings via strategic GenAI integrations.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sunrise PO -->
-                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
-                    <div class="mb-6 md:mb-0">
-                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">Sep 2022 – Feb 2024</span>
-                        <div class="flex items-center gap-2 text-[var(--color-ink)]/40 text-sm">
-                            <i data-lucide="map-pin" class="w-3 h-3"></i>
-                            <span>Zürich Metropolitan Area</span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-display font-semibold mb-1 group-hover:text-[var(--color-accent)] transition-colors">Product Owner Digital Transformation</h3>
-                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">Sunrise GmbH</p>
-                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl mb-8">
-                            Architected and shipped NEXUS — an LLM-powered AI troubleshooting platform serving 5M+ customers — leading a cross-functional team of 9 from zero to full production, reducing inbound tech support call volumes.
-                        </p>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>NEXUS Platform Architecture: Designed end-to-end telemetry and model integration for concurrent users.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Cost Optimization: Exceeded departmental cost targets by 20% in 2023 via operating model redesign.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Agile Delivery: Surpassed all departmental KPIs by 20% by owning product delivery end-to-end.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Team Development: Led People Development for a core agile team of 15+ engineers.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Lufthansa PO -->
-                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
-                    <div class="mb-6 md:mb-0">
-                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">Mar 2018 – Aug 2022</span>
-                        <div class="flex items-center gap-2 text-[var(--color-ink)]/40 text-sm">
-                            <i data-lucide="map-pin" class="w-3 h-3"></i>
-                            <span>Zurich, Switzerland (Hybrid)</span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-display font-semibold mb-1 group-hover:text-[var(--color-accent)] transition-colors">Product Owner</h3>
-                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">Lufthansa Systems</p>
-                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl mb-8">
-                            Modernized a mission-critical internal application portfolio of 77 tools — leading a cross-functional team of 8 and driving a 60% increase in operational efficiency across international operations in Zurich and Gdansk.
-                        </p>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Operational Savings: Delivered 40%+ savings against budget via automation-first practices.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Risk & Compliance: Maintained zero critical compliance gaps via active aviation risk registers.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Global Alignment: Unified stakeholder alignment across two international locations.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Lufthansa Maps PM -->
-                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
-                    <div class="mb-6 md:mb-0">
-                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">Feb 2016 – Feb 2018</span>
-                        <div class="flex items-center gap-2 text-[var(--color-ink)]/40 text-sm">
-                            <i data-lucide="map-pin" class="w-3 h-3"></i>
-                            <span>Zurich, Switzerland</span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-display font-semibold mb-1 group-hover:text-[var(--color-accent)] transition-colors">Production Manager Data Driven Maps Program Lido/Navigation</h3>
-                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">Lufthansa Systems</p>
-                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl mb-8">
-                            Launched a first-of-its-kind production process for the Data Driven Maps Program from zero to full implementation — defining quality standards, securing regulatory certifications, and scaling operations on time.
-                        </p>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Cost Optimization: Reduced procurement costs by conducting rigorous make-or-buy analyses.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Capacity Building: Identified critical skill gaps and built targeted training plans.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Risk Mitigation: Designed transition plans to bridge operations smoothly.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Lufthansa Prod Mgr -->
-                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
-                    <div class="mb-6 md:mb-0">
-                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">May 2012 – Mar 2016</span>
-                        <div class="flex items-center gap-2 text-[var(--color-ink)]/40 text-sm">
-                            <i data-lucide="map-pin" class="w-3 h-3"></i>
-                            <span>Zurich, Switzerland</span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-display font-semibold mb-1 group-hover:text-[var(--color-accent)] transition-colors">Manager Production Lido/Navigation</h3>
-                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">Lufthansa Systems</p>
-                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl mb-8">
-                            Led a multicultural production team of 19 FTE, managing the full AIRAC cycle — ensuring on-time, compliant delivery of aeronautical products to airline customers.
-                        </p>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>People Development: Drove performance and retention by owning hiring and onboarding.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Process Optimization: Restructured communication workflows between Zurich and Gdansk to reduce delays.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Lufthansa QA -->
-                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
-                    <div class="mb-6 md:mb-0">
-                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">May 2009 – May 2012</span>
-                        <div class="flex items-center gap-2 text-[var(--color-ink)]/40 text-sm">
-                            <i data-lucide="map-pin" class="w-3 h-3"></i>
-                            <span>Zurich, Switzerland</span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-display font-semibold mb-1 group-hover:text-[var(--color-accent)] transition-colors">Quality Assurance / Aeronautical Chart Specialist</h3>
-                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">Lufthansa Systems</p>
-                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl mb-8">
-                            Maintained zero-defect delivery of aeronautical charts to airline customers by ensuring full compliance with international safety and quality standards across every AIRAC cycle.
-                        </p>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Mentorship: Mentored and trained new hires to accelerate team capability.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Quality Controls: Led the testing and evaluation of new tools before production integration.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Air Traffic Controller -->
-                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
-                    <div class="mb-6 md:mb-0">
-                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">Apr 2006 – May 2009</span>
-                        <div class="flex items-center gap-2 text-[var(--color-ink)]/40 text-sm">
-                            <i data-lucide="map-pin" class="w-3 h-3"></i>
-                            <span>Greater Delhi Area, India</span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-display font-semibold mb-1 group-hover:text-[var(--color-accent)] transition-colors">Air Traffic Controller</h3>
-                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">Airports Authority of India (AAI)</p>
-                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl mb-8">
-                            Ensured the safe and efficient movement of hundreds of aircraft and thousands of passengers daily at IGI Airport New Delhi — operating ATC (Non-Radar) services across Delhi FIR with zero margin for error.
-                        </p>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Capacity Expansion: Commissioned Runway 11/29 and established procedural approach frameworks.</span>
-                            </div>
-                            <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
-                                <span>Training & Readiness: Designed simulator exercises and training notes for the Area Control Centre.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Experience cards rendered dynamically from /api/experiences -->
+            <div id="experience-list" class="space-y-6">
+                <!-- Skeleton loaders shown while fetching -->
+                <div class="experience-skeleton glass p-8 rounded-[32px] animate-pulse h-48"></div>
+                <div class="experience-skeleton glass p-8 rounded-[32px] animate-pulse h-48"></div>
+                <div class="experience-skeleton glass p-8 rounded-[32px] animate-pulse h-48"></div>
             </div>
         </section>
 
@@ -785,7 +724,7 @@
                             <div class="flex flex-wrap gap-2">
                                 <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text-[var(--color-ink)]">End-to-End Delivery</span>
                                 <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text-[var(--color-ink)]">SAFe 6 (Agile at Scale)</span>
-                                <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text(--color-ink)">Stakeholder Management</span>
+                                <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text-[var(--color-ink)]">Stakeholder Management</span>
                                 <span class="pill-tag text-[var(--color-ink)]/60 border-[var(--color-ink)]/10 hover:border-[var(--color-ink)]/30 hover:text-[var(--color-ink)]">Operational Efficiency</span>
                             </div>
                         </div>
@@ -956,12 +895,12 @@
                 
                 <!-- Header: Full Width -->
                 <div class="mb-16 relative z-10">
-                    <span class="section-label mb-8 block">Get in touch</span>
+                    <span class="section-label mb-8 block">Work With Me</span>
                     <h2 class="text-5xl font-bold mb-8 tracking-tighter leading-none uppercase text-[var(--color-ink)]">
-                        Let's discuss <br> your project.
+                        Let's build <br> something real.
                     </h2>
                     <p class="text-[var(--color-ink)]/40 max-w-2xl text-lg">
-                        Have a project in mind? Let's discuss how we can work together to build something exceptional. Open for leadership roles and advisory on digital products and AI strategy.
+                        Whether you need an AI strategy that ships, senior product leadership on a fractional basis, coaching toward a VP role, or a speaker who has lived the transformation — reach out. All enquiries are answered personally.
                     </p>
                 </div>
 
@@ -1014,12 +953,14 @@
                             <div class="space-y-2">
                                 <label class="text-[10px] uppercase tracking-widest text-[var(--color-ink)]/30 ml-2">Area of Interest</label>
                                 <div class="flex flex-wrap gap-2" id="interest-pills-container">
-                                    <button type="button" onclick="selectInterest(this, 'Advisory')" class="interest-pill px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest transition-all border bg-[var(--color-ink)] text-[var(--color-surface)] border-[var(--color-ink)] font-bold shadow-md">Advisory</button>
-                                    <button type="button" onclick="selectInterest(this, 'Product Roles')" class="interest-pill px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest transition-all border bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]">Product Roles</button>
+                                    <button type="button" onclick="selectInterest(this, 'GenAI Advisory')" class="interest-pill px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest transition-all border bg-[var(--color-ink)] text-[var(--color-surface)] border-[var(--color-ink)] font-bold shadow-md">GenAI Advisory</button>
+                                    <button type="button" onclick="selectInterest(this, 'Fractional HoP')" class="interest-pill px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest transition-all border bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]">Fractional HoP</button>
+                                    <button type="button" onclick="selectInterest(this, 'Coaching')" class="interest-pill px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest transition-all border bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]">Coaching</button>
                                     <button type="button" onclick="selectInterest(this, 'Speaking')" class="interest-pill px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest transition-all border bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]">Speaking</button>
-                                    <button type="button" onclick="selectInterest(this, 'General')" class="interest-pill px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest transition-all border bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]">General</button>
+                                    <button type="button" onclick="selectInterest(this, 'Mentoring')" class="interest-pill px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest transition-all border bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]">Mentoring</button>
+                                    <button type="button" onclick="selectInterest(this, 'Career Role')" class="interest-pill px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest transition-all border bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]">Career Role</button>
                                 </div>
-                                <input type="hidden" name="interest" id="selected-interest-input" value="Advisory">
+                                <input type="hidden" name="interest" id="selected-interest-input" value="GenAI Advisory">
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1072,19 +1013,34 @@
         </section>
     </main>
 
-    <footer class="max-w-6xl mx-auto px-6 py-12 border-t border-[var(--color-border)] flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex flex-col gap-2">
-            <div class="text-[10px] font-mono tracking-widest text-[var(--color-ink)] opacity-40 uppercase">© <span id="copyright-year">2026</span> VINAMRA KUMAR. ALL RIGHTS RESERVED.</div>
-            <div id="db-status-container" class="hidden flex items-center gap-2 group cursor-help">
-                <div id="db-status-dot" class="w-1.5 h-1.5 rounded-full animate-pulse bg-red-500"></div>
-                <span id="db-status-text" class="text-[9px] font-mono uppercase tracking-tighter text-[var(--color-ink)] opacity-30">
-                    DB Offline
-                </span>
+    <footer class="border-t border-[var(--color-border)]">
+        <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <!-- Brand + DB status -->
+            <div class="flex flex-col gap-2">
+                <span class="font-display font-bold text-lg tracking-tighter text-[var(--color-ink)]/60">VK</span>
+                <div class="text-[9px] font-mono tracking-widest text-[var(--color-ink)]/30 uppercase">© <span id="copyright-year">2026</span> Vinamra Kumar · Swiss Professional</div>
+                <div id="db-status-container" class="hidden items-center gap-2">
+                    <div id="db-status-dot" class="w-1.5 h-1.5 rounded-full animate-pulse bg-red-500"></div>
+                    <span id="db-status-text" class="text-[9px] font-mono uppercase tracking-tighter text-[var(--color-ink)]/30">DB Offline</span>
+                </div>
             </div>
-        </div>
-        <div class="flex items-center gap-8 opacity-40">
-            <a href="javascript:void(0)" onclick="openPrivacy()" class="text-[10px] uppercase tracking-widest hover:text-[var(--color-ink)] transition-colors">Privacy</a>
-            <a href="#" class="text-[10px] uppercase tracking-widest hover:text-[var(--color-ink)] transition-colors text-[var(--color-ink)]">Swiss Professional</a>
+
+            <!-- Nav links -->
+            <div class="flex flex-wrap items-center justify-center gap-6">
+                <a href="#services" class="text-[10px] font-mono uppercase tracking-widest text-[var(--color-ink)]/30 hover:text-[var(--color-accent)] transition-colors">Services</a>
+                <a href="#projects" class="text-[10px] font-mono uppercase tracking-widest text-[var(--color-ink)]/30 hover:text-[var(--color-accent)] transition-colors">Projects</a>
+                <a href="#experience" class="text-[10px] font-mono uppercase tracking-widest text-[var(--color-ink)]/30 hover:text-[var(--color-accent)] transition-colors">Experience</a>
+                <a href="#contact" class="text-[10px] font-mono uppercase tracking-widest text-[var(--color-ink)]/30 hover:text-[var(--color-accent)] transition-colors">Contact</a>
+                <a href="javascript:void(0)" onclick="openPrivacy()" class="text-[10px] font-mono uppercase tracking-widest text-[var(--color-ink)]/30 hover:text-[var(--color-accent)] transition-colors">Privacy</a>
+            </div>
+
+            <!-- Social -->
+            <div class="flex items-center gap-4">
+                <a href="https://www.linkedin.com/in/vinamrakumar" target="_blank" rel="noopener noreferrer"
+                   class="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-border)] text-[var(--color-ink)]/40 hover:text-[var(--color-accent)] hover:border-[var(--color-accent)]/40 transition-all text-[10px] font-mono uppercase tracking-widest">
+                    <i data-lucide="linkedin" class="w-3 h-3"></i> LinkedIn
+                </a>
+            </div>
         </div>
     </footer>
 
@@ -1152,13 +1108,10 @@
     </div>
 
     <script type="module">
-        const CASE_STUDIES = [
-            {
-                title: "NEXUS: AI Troubleshooting",
-                tag: "Telecom AI",
-                stats: "5M+ Users",
-                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200",
-                description: "Spearheaded the first AI-driven troubleshooting engine for technical support at Sunrise GmbH, significantly reducing support volume and improving user experience.",
+        // ─── Case study detail data (rich content not stored in DB) ───────────────
+        // Keyed by project title for lookup after fetching projects from the API.
+        const CASE_STUDY_DETAILS = {
+            "NEXUS: AI Troubleshooting": {
                 challenge: "Support agents were overwhelmed with repetitive Wi-Fi and network diagnostics calls. Traditional diagnostic tools were fragmented, resulting in high average handling times and low customer satisfaction.",
                 solution: "Designed and launched 'NEXUS', a proactive, automated diagnostics portal. NEXUS interfaces directly with device telemetry APIs, runs automated line checks, and uses rule-based and predictive models to guide customers through self-resolution steps.",
                 results: [
@@ -1171,12 +1124,7 @@
                 timeline: "18 Months (2022 - 2024)",
                 impactMetric: "2.4M CHF Saved"
             },
-            {
-                title: "GenAI Strategy & MVP",
-                tag: "Digital Transformation",
-                stats: "8M+ CHF Saved",
-                image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
-                description: "Orchestrated the multi-year GenAI roadmap to automate high-volume customer journeys, defining the convergence of LLMs and business strategy.",
+            "GenAI Strategy & MVP": {
                 challenge: "Traditional IVRs and chatbots had rigid decision trees, leading to poor customer experiences. Implementing LLMs required solving issues related to hallucinations, GDPR compliance, and complex integration with legacy billing platforms.",
                 solution: "Devised a comprehensive GenAI roadmap, aligning C-level executives. Launched safe MVP trials utilizing Retrieval-Augmented Generation (RAG) and custom LLM gateway guardrails for privacy and safety.",
                 results: [
@@ -1189,12 +1137,7 @@
                 timeline: "Ongoing (Launched 2024)",
                 impactMetric: "8M+ CHF Value"
             },
-            {
-                title: "Lido Aviation DMS",
-                tag: "Aviation Software",
-                stats: "60% Efficiency",
-                image: "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&fit=crop&q=80&w=1200",
-                description: "Led the transformation of legacy flight navigation data management systems (DMS) into high-efficiency microservices for Lufthansa Systems (LSY AG).",
+            "Lido Aviation DMS": {
                 challenge: "Safety-critical flight navigation databases were produced using monolithic legacy applications. The cycle time to process and package worldwide aeronautical updates was 5 days, leaving no room for operational flexibility.",
                 solution: "Led a cross-border agile team of 15+ engineers to rebuild the data pipeline. Transitioned the monolith to cloud-native microservices, automated GIS verification layers, and created a unified navigation console.",
                 results: [
@@ -1207,11 +1150,99 @@
                 timeline: "4 Years (2018 - 2022)",
                 impactMetric: "60% Turnaround Gain"
             }
-        ];
+        };
 
-        window.openCaseStudy = (index) => {
-            const data = CASE_STUDIES[index];
-            if (!data) return;
+        // ─── Project & Experience rendering ──────────────────────────────────────
+
+        // Projects fetched from API, stored for filter/modal access
+        let projectsData = [];
+
+        function renderProjectCard(project, index) {
+            return `
+                <div data-category="${project.tag}" class="project-card group relative h-[450px] overflow-hidden rounded-[32px] glass border border-[var(--color-ink)]/5 hover:border-[var(--color-ink)]/20 transition-all">
+                    <img src="${project.image}" alt="${project.title}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-20" referrerpolicy="no-referrer">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-[9px] font-mono border border-[var(--color-ink)]/20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-widest text-[var(--color-accent)] font-bold">${project.tag}</span>
+                            <span class="text-[9px] font-mono bg-[var(--color-ink)] text-[var(--color-surface)] px-3 py-1 rounded-full uppercase tracking-widest font-bold">${project.stats}</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-medium mb-4">${project.title}</h3>
+                        <p class="text-[var(--color-ink)]/60 text-[11px] leading-relaxed max-w-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            ${project.description}
+                        </p>
+                        <button onclick="openCaseStudy('${project.title.replace(/'/g, "\\'")}')" class="inline-flex items-center gap-1 text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:underline">
+                            View Case Study →
+                        </button>
+                    </div>
+                </div>`;
+        }
+
+        function renderExperienceCard(exp) {
+            const achievements = Array.isArray(exp.achievements) ? exp.achievements : JSON.parse(exp.achievements || '[]');
+            const achievementRows = achievements.map(a => `
+                <div class="flex gap-3 text-sm text-[var(--color-ink)]/50 leading-snug">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-[var(--color-accent)]/40 shrink-0 mt-0.5"></i>
+                    <span>${a}</span>
+                </div>`).join('');
+
+            return `
+                <div class="glass p-8 rounded-[32px] hover:bg-[var(--color-ink)]/[0.08] transition-all">
+                    <div class="mb-6 md:mb-0">
+                        <span class="text-[11px] font-mono text-[var(--color-ink)]/30 block mb-2">${exp.period}</span>
+                        <div class="flex items-center gap-2 text-[var(--color-ink)]/40 text-sm">
+                            <i data-lucide="map-pin" class="w-3 h-3"></i>
+                            <span>${exp.location}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-display font-semibold mb-1">${exp.role}</h3>
+                        <p class="text-[var(--color-ink)]/40 font-medium mb-4">${exp.company}</p>
+                        <p class="text-[var(--color-ink)]/60 leading-relaxed max-w-3xl mb-8">${exp.description}</p>
+                        <div class="grid sm:grid-cols-2 gap-4">${achievementRows}</div>
+                    </div>
+                </div>`;
+        }
+
+        async function loadProjects() {
+            const grid = document.getElementById('projects-grid');
+            const filters = document.getElementById('project-filters');
+            try {
+                const res = await fetch('/api/projects');
+                if (!res.ok) throw new Error('API error');
+                projectsData = await res.json();
+
+                // Build dynamic filter buttons from unique tags
+                const tags = ['All', ...new Set(projectsData.map(p => p.tag))];
+                filters.innerHTML = tags.map((tag, i) =>
+                    `<button onclick="filterProjects('${tag}')" class="filter-btn px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-widest transition-all border ${i === 0 ? 'bg-[var(--color-ink)] text-[var(--color-surface)] border-[var(--color-ink)] shadow-md' : 'bg-transparent text-[var(--color-ink-faint)] border-[var(--color-border)] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]'}">${tag}</button>`
+                ).join('');
+
+                grid.innerHTML = projectsData.map((p, i) => renderProjectCard(p, i)).join('');
+                if (window.lucide) lucide.createIcons();
+            } catch {
+                grid.innerHTML = '<p class="text-[var(--color-ink)]/30 text-sm font-mono col-span-3 text-center py-12">Projects unavailable. Please try again later.</p>';
+            }
+        }
+
+        async function loadExperiences() {
+            const list = document.getElementById('experience-list');
+            try {
+                const res = await fetch('/api/experiences');
+                if (!res.ok) throw new Error('API error');
+                const experiences = await res.json();
+                list.innerHTML = experiences.map(renderExperienceCard).join('');
+                if (window.lucide) lucide.createIcons();
+            } catch {
+                list.innerHTML = '<p class="text-[var(--color-ink)]/30 text-sm font-mono text-center py-12">Experience data unavailable. Please try again later.</p>';
+            }
+        }
+
+        window.openCaseStudy = (title) => {
+            const project = projectsData.find(p => p.title === title);
+            if (!project) return;
+            const details = CASE_STUDY_DETAILS[title] || {};
+            const data = { ...project, ...details };
 
             const modal = document.getElementById('case-study-modal');
             const content = document.getElementById('modal-content');
@@ -1388,6 +1419,10 @@
             });
         });
 
+        // Load dynamic data from API
+        loadProjects();
+        loadExperiences();
+
         // Track page view
         trackEvent("page_view_portfolio");
 
@@ -1402,6 +1437,7 @@
                 
                 if (container && dot && text) {
                     container.classList.remove('hidden');
+                    container.classList.add('flex');
                     if (data.status === 'active') {
                         dot.classList.add('bg-[#4ECC9F]');
                         dot.classList.remove('bg-red-500');
@@ -1593,6 +1629,60 @@
         window.addEventListener('load', initIcons);
         // Immediate call as well
         initIcons();
+
+        // ── Scroll-reveal (IntersectionObserver) ────────────────────────────
+        (function () {
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+
+            // Observe all fade-up elements (sections + service cards)
+            document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
+
+            // Also stagger-observe service cards individually
+            document.querySelectorAll('#services .glass').forEach((card, i) => {
+                card.classList.add('fade-up');
+                card.classList.add(['d1','d2','d3','d4','d5'][i] || '');
+                revealObserver.observe(card);
+            });
+        })();
+
+        // ── Animated stat counters ──────────────────────────────────────────
+        (function () {
+            function animateCounter(el) {
+                const target = parseInt(el.dataset.target, 10);
+                const suffix = el.dataset.suffix || '';
+                const duration = 1400;
+                const start = performance.now();
+
+                function step(now) {
+                    const progress = Math.min((now - start) / duration, 1);
+                    // Ease-out cubic
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.round(eased * target);
+                    el.textContent = current + suffix;
+                    if (progress < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            }
+
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.querySelectorAll('.stat-number').forEach(animateCounter);
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            const statsSection = document.getElementById('stats-section');
+            if (statsSection) statsObserver.observe(statsSection);
+        })();
     </script>
 </body>
 </html>
