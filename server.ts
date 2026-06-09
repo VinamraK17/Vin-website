@@ -1,3 +1,4 @@
+// Vinamra Kumar Portfolio Server (Copyright updated, TM symbols removed)
 import express from "express";
 import path from "path";
 import dotenv from "dotenv";
