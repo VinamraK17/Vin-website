@@ -1,6 +1,7 @@
 // Vinamra Kumar Portfolio Server (Copyright updated, TM symbols removed)
 import express from "express";
 import path from "path";
+import { createServer as createViteServer } from "vite";
 import dotenv from "dotenv";
 import { PrismaClient } from "@prisma/client";
 import { google } from "googleapis";
@@ -111,154 +112,143 @@ async function sendEmail(name: string, email: string, message: string) {
   }
 }
 
+const STATIC_PROJECTS = [
+  {
+    title: "NEXUS: AI Troubleshooting",
+    tag: "Telecom AI",
+    stats: "5M+ Users",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
+    description: "Spearheaded the first AI-driven troubleshooting engine for technical support at Sunrise GmbH, significantly reducing support volume.",
+    order: 0
+  },
+  {
+    title: "GenAI Strategy & MVP",
+    tag: "Digital Transformation",
+    stats: "8M+ CHF Saved",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+    description: "Orchestrating the GenAI roadmap to automate high-volume customer journeys, defining the convergence of LLMs and business strategy.",
+    order: 1
+  },
+  {
+    title: "Lido Aviation DMS",
+    tag: "Aviation Software",
+    stats: "60% Efficiency",
+    image: "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&fit=crop&q=80&w=800",
+    description: "Led the transformation of legacy flight navigation data management systems into high-efficiency microservices for Lufthansa Systems.",
+    order: 2
+  }
+];
+
+const STATIC_EXPERIENCES = [
+  {
+    company: "Sunrise GmbH",
+    role: "Manager Digital Transformation",
+    period: "Feb 2024 – Present",
+    location: "Zurich, Switzerland",
+    description: "Owning the digital product strategy for a CHF 1B+ telco, aligning 5+ cross-functional teams around a unified transformation roadmap that accelerated time-to-market across the entire portfolio.",
+    achievements: [
+      "Digital Leadership: Managed a multi-million franc digital product portfolio, embedding OKR and KPI frameworks that connected product delivery directly to business revenue targets.",
+      "Strategic Alignment: Built and governed an ecosystem of external partners and vendors, ensuring delivery quality, cost discipline, and strategic alignment across the full product development lifecycle.",
+      "Market Competitive Positioning: Led ongoing market and trend analysis, enabling the business to identify and act on digital opportunities ahead of competitors.",
+      "Financial Performance: Secured 8M+ CHF in annual efficiency savings through strategic GenAI integrations and process automation."
+    ],
+    order: 0
+  },
+  {
+    company: "Sunrise GmbH",
+    role: "Product Owner Digital Transformation",
+    period: "Sep 2022 – Feb 2024",
+    location: "Zürich Metropolitan Area",
+    description: "Architected and shipped NEXUS — an LLM-powered AI troubleshooting platform serving 5M+ customers — leading a cross-functional team of 9 from zero to full production, reducing inbound tech support call volumes.",
+    achievements: [
+      "NEXUS Platform Architecture: Designed the end-to-end system architecture, making core infrastructure decisions on AI model integration, scalability, and platform resilience for millions of concurrent users.",
+      "Cost Optimization: Exceeded departmental cost targets by 20% in 2023 by redesigning team operating models around the customer journey.",
+      "Agile Delivery: Surpassed all departmental KPIs by 20% by owning product delivery end-to-end — from vision and business case through to launch and iteration.",
+      "Team Development: Led People Development for a core agile team of 15+ engineers and designers."
+    ],
+    order: 1
+  },
+  {
+    company: "Lufthansa Systems",
+    role: "Product Owner",
+    period: "Mar 2018 – Aug 2022",
+    location: "Zurich, Switzerland (Hybrid)",
+    description: "Modernized a mission-critical internal application portfolio of 77 tools — leading a cross-functional team of 8 and driving a 60% increase in operational efficiency across international operations in Zurich and Gdansk.",
+    achievements: [
+      "Operational Savings: Delivered 40%+ savings against budget by replacing legacy workflows with agile, automation-first practices.",
+      "Risk & Compliance Management: Ensured zero critical compliance gaps across all 77 aviation applications by building and maintaining a live risk register meeting stringent international aeronautical regulatory standards.",
+      "Global Team Alignment: Unified stakeholder alignment across two international locations, eliminating release delays through structured backlog management."
+    ],
+    order: 2
+  },
+  {
+    company: "Lufthansa Systems",
+    role: "Production Manager Data Driven Maps Program Lido/Navigation",
+    period: "Feb 2016 – Feb 2018",
+    location: "Zurich, Switzerland",
+    description: "Launched a first-of-its-kind production process for the Data Driven Maps Program from zero to full implementation — defining quality standards, securing regulatory certifications, and scaling operations on time.",
+    achievements: [
+      "Procurement Cost Optimization: Reduced procurement costs by conducting rigorous make-or-buy analyses, selecting the optimal mix of external partners and internal capabilities.",
+      "Skill Development & Capacity Building: Future-proofed the team by identifying critical skill gaps and building targeted training plans.",
+      "Risk Mitigation: Mitigated program delivery risk by designing a robust transition plan that bridged current operations with future objectives."
+    ],
+    order: 3
+  },
+  {
+    company: "Lufthansa Systems",
+    role: "Manager Production Lido/Navigation",
+    period: "May 2012 – Mar 2016",
+    location: "Zurich, Switzerland",
+    description: "Led a multicultural production team of 19 FTE, managing the full AIRAC cycle — ensuring on-time, compliant delivery of aeronautical products to airline customers across international markets.",
+    achievements: [
+      "People Development: Drove team performance and retention by owning hiring, compensation decisions, and onboarding.",
+      "Process Optimization: Improved cross-site coordination between Zurich and Gdansk by restructuring communication and process workflows, eliminating delays."
+    ],
+    order: 4
+  },
+  {
+    company: "Lufthansa Systems",
+    role: "Quality Assurance / Aeronautical Chart Specialist",
+    period: "May 2009 – May 2012",
+    location: "Zurich, Switzerland",
+    description: "Maintained zero-defect delivery of aeronautical charts to airline customers by ensuring full compliance with international safety and quality standards across every AIRAC cycle.",
+    achievements: [
+      "Mentorship: Accelerated team capability by mentoring and training new hires, reducing onboarding time.",
+      "Quality Controls: Led the testing and evaluation of new tools before production integration, protecting operational continuity."
+    ],
+    order: 5
+  },
+  {
+    company: "Airports Authority of India (AAI)",
+    role: "Air Traffic Controller",
+    period: "Apr 2006 – May 2009",
+    location: "Greater Delhi Area, India",
+    description: "Ensured the safe and efficient movement of hundreds of aircraft and thousands of passengers daily at IGI Airport New Delhi — operating ATC (Non-Radar) services across Delhi FIR with zero margin for error.",
+    achievements: [
+      "Capacity Expansion: Contributed directly to airport capacity expansion by participating in the commissioning of Runway 11/29 and developing new ATC procedures.",
+      "Controller Training: Developed training notes, presentations, and simulator exercises for the Area Control Centre, raising performance standards."
+    ],
+    order: 6
+  }
+];
+
 async function seedData() {
   const projectCount = await prisma.project.count();
   if (projectCount === 0) {
     console.log("Seeding initial projects...");
     await prisma.project.createMany({
-      data: [
-        {
-          title: "NEXUS: AI Troubleshooting",
-          tag: "Telecom AI",
-          stats: "5M+ Users",
-          image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
-          description: "Spearheaded the first AI-driven troubleshooting engine for technical support at Sunrise GmbH, significantly reducing support volume.",
-          order: 0
-        },
-        {
-          title: "GenAI Strategy & MVP",
-          tag: "Digital Transformation",
-          stats: "8M+ CHF Saved",
-          image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-          description: "Orchestrating the GenAI roadmap to automate high-volume customer journeys, defining the convergence of LLMs and business strategy.",
-          order: 1
-        },
-        {
-          title: "Lido Aviation DMS",
-          tag: "Aviation Software",
-          stats: "60% Efficiency",
-          image: "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&fit=crop&q=80&w=800",
-          description: "Led the transformation of legacy flight navigation data management systems into high-efficiency microservices for Lufthansa Systems.",
-          order: 2
-        }
-      ]
+      data: STATIC_PROJECTS
     });
   }
 
   const expCount = await prisma.experience.count();
   if (expCount === 0) {
     console.log("Seeding full experience history...");
-
-    await prisma.experience.create({
-      data: {
-        company: "Sunrise GmbH",
-        role: "Manager Digital Transformation",
-        period: "Feb 2024 – Present",
-        location: "Zurich, Switzerland",
-        description: "Owning the digital product strategy for a CHF 1B+ telco, aligning 5+ cross-functional teams around a unified transformation roadmap that accelerated time-to-market across the entire portfolio.",
-        achievements: [
-          "Digital Leadership: Managed a multi-million franc digital product portfolio, embedding OKR and KPI frameworks that connected product delivery directly to business revenue targets.",
-          "Strategic Alignment: Built and governed an ecosystem of external partners and vendors, ensuring delivery quality, cost discipline, and strategic alignment across the full product development lifecycle.",
-          "Market Competitive Positioning: Led ongoing market and trend analysis, enabling the business to identify and act on digital opportunities ahead of competitors.",
-          "Financial Performance: Secured 8M+ CHF in annual efficiency savings through strategic GenAI integrations and process automation."
-        ],
-        order: 0
-      }
-    });
-
-    await prisma.experience.create({
-      data: {
-        company: "Sunrise GmbH",
-        role: "Product Owner Digital Transformation",
-        period: "Sep 2022 – Feb 2024",
-        location: "Zürich Metropolitan Area",
-        description: "Architected and shipped NEXUS — an LLM-powered AI troubleshooting platform serving 5M+ customers — leading a cross-functional team of 9 from zero to full production, reducing inbound tech support call volumes.",
-        achievements: [
-          "NEXUS Platform Architecture: Designed the end-to-end system architecture, making core infrastructure decisions on AI model integration, scalability, and platform resilience for millions of concurrent users.",
-          "Cost Optimization: Exceeded departmental cost targets by 20% in 2023 by redesigning team operating models around the customer journey.",
-          "Agile Delivery: Surpassed all departmental KPIs by 20% by owning product delivery end-to-end — from vision and business case through to launch and iteration.",
-          "Team Development: Led People Development for a core agile team of 15+ engineers and designers."
-        ],
-        order: 1
-      }
-    });
-
-    await prisma.experience.create({
-      data: {
-        company: "Lufthansa Systems",
-        role: "Product Owner",
-        period: "Mar 2018 – Aug 2022",
-        location: "Zurich, Switzerland (Hybrid)",
-        description: "Modernized a mission-critical internal application portfolio of 77 tools — leading a cross-functional team of 8 and driving a 60% increase in operational efficiency across international operations in Zurich and Gdansk.",
-        achievements: [
-          "Operational Savings: Delivered 40%+ savings against budget by replacing legacy workflows with agile, automation-first practices.",
-          "Risk & Compliance Management: Ensured zero critical compliance gaps across all 77 aviation applications by building and maintaining a live risk register meeting stringent international aeronautical regulatory standards.",
-          "Global Team Alignment: Unified stakeholder alignment across two international locations, eliminating release delays through structured backlog management."
-        ],
-        order: 2
-      }
-    });
-
-    await prisma.experience.create({
-      data: {
-        company: "Lufthansa Systems",
-        role: "Production Manager Data Driven Maps Program Lido/Navigation",
-        period: "Feb 2016 – Feb 2018",
-        location: "Zurich, Switzerland",
-        description: "Launched a first-of-its-kind production process for the Data Driven Maps Program from zero to full implementation — defining quality standards, securing regulatory certifications, and scaling operations on time.",
-        achievements: [
-          "Procurement Cost Optimization: Reduced procurement costs by conducting rigorous make-or-buy analyses, selecting the optimal mix of external partners and internal capabilities.",
-          "Skill Development & Capacity Building: Future-proofed the team by identifying critical skill gaps and building targeted training plans.",
-          "Risk Mitigation: Mitigated program delivery risk by designing a robust transition plan that bridged current operations with future objectives."
-        ],
-        order: 3
-      }
-    });
-
-    await prisma.experience.create({
-      data: {
-        company: "Lufthansa Systems",
-        role: "Manager Production Lido/Navigation",
-        period: "May 2012 – Mar 2016",
-        location: "Zurich, Switzerland",
-        description: "Led a multicultural production team of 19 FTE, managing the full AIRAC cycle — ensuring on-time, compliant delivery of aeronautical products to airline customers across international markets.",
-        achievements: [
-          "People Development: Drove team performance and retention by owning hiring, compensation decisions, and onboarding.",
-          "Process Optimization: Improved cross-site coordination between Zurich and Gdansk by restructuring communication and process workflows, eliminating delays."
-        ],
-        order: 4
-      }
-    });
-
-    await prisma.experience.create({
-      data: {
-        company: "Lufthansa Systems",
-        role: "Quality Assurance / Aeronautical Chart Specialist",
-        period: "May 2009 – May 2012",
-        location: "Zurich, Switzerland",
-        description: "Maintained zero-defect delivery of aeronautical charts to airline customers by ensuring full compliance with international safety and quality standards across every AIRAC cycle.",
-        achievements: [
-          "Mentorship: Accelerated team capability by mentoring and training new hires, reducing onboarding time.",
-          "Quality Controls: Led the testing and evaluation of new tools before production integration, protecting operational continuity."
-        ],
-        order: 5
-      }
-    });
-
-    await prisma.experience.create({
-      data: {
-        company: "Airports Authority of India (AAI)",
-        role: "Air Traffic Controller",
-        period: "Apr 2006 – May 2009",
-        location: "Greater Delhi Area, India",
-        description: "Ensured the safe and efficient movement of hundreds of aircraft and thousands of passengers daily at IGI Airport New Delhi — operating ATC (Non-Radar) services across Delhi FIR with zero margin for error.",
-        achievements: [
-          "Capacity Expansion: Contributed directly to airport capacity expansion by participating in the commissioning of Runway 11/29 and developing new ATC procedures.",
-          "Controller Training: Developed training notes, presentations, and simulator exercises for the Area Control Centre, raising performance standards."
-        ],
-        order: 6
-      }
-    });
+    for (const exp of STATIC_EXPERIENCES) {
+      await prisma.experience.create({
+        data: exp
+      });
+    }
   }
 }
 
@@ -328,8 +318,8 @@ async function startServer() {
       });
       res.json(projects);
     } catch (error) {
-      console.error("Error fetching projects:", error);
-      res.status(500).json({ error: "Failed to fetch projects" });
+      console.warn("Database connection failed. Serving fallback static projects.");
+      res.json(STATIC_PROJECTS);
     }
   });
 
@@ -341,8 +331,8 @@ async function startServer() {
       });
       res.json(experiences);
     } catch (error) {
-      console.error("Error fetching experiences:", error);
-      res.status(500).json({ error: "Failed to fetch experiences" });
+      console.warn("Database connection failed. Serving fallback static experiences.");
+      res.json(STATIC_EXPERIENCES);
     }
   });
 
@@ -385,11 +375,24 @@ async function startServer() {
     }
   });
 
-  // Serve portfolio.html as the main page for all non-API routes
-  const portfolioPath = path.join(process.cwd(), "portfolio.html");
-  app.get("*", (req, res) => {
-    res.sendFile(portfolioPath);
+  // Serve portfolio.html for standalone requests
+  app.get("/portfolio.html", (req, res) => {
+    res.sendFile(path.join(process.cwd(), "portfolio.html"));
   });
+
+  if (process.env.NODE_ENV !== "production") {
+    const vite = await createViteServer({
+      server: { middlewareMode: true },
+      appType: "spa",
+    });
+    app.use(vite.middlewares);
+  } else {
+    const distPath = path.join(process.cwd(), "dist");
+    app.use(express.static(distPath));
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(distPath, "index.html"));
+    });
+  }
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on http://localhost:${PORT}`);
